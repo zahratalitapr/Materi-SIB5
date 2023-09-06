@@ -1,0 +1,60 @@
+#free, #premium, #profesional{
+    width: 300px;
+    height: 300px;
+    border: 1px solid #cac7c7;
+    display: inline-block;
+    margin: 20px;
+}
+
+table{
+    width: 300px;
+}
+
+thead{
+    height: 60px;
+    padding-bottom: 5px;
+}
+
+
+#blue{
+    background-color: blue;
+}
+
+#orange{
+    background-color: orange;
+}
+
+#green{
+    background-color: green;
+}
+
+#small{
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+tbody tr td{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+hr{
+    margin-bottom: auto;
+    margin-top: 15px;
+    color: #e5e5e5;
+
+}
+
+input{
+    border: 1px solid;
+    width: 250px;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+#blue, #green, #orange, #btn{
+    color: white;
+}
