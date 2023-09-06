@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Form</title>
+</head>
+<body>
+    <h2>FORMULIR</h2>
+    <br>
+    <form action="">
+        <label for="">Masukan Nama Anda:</label>
+        <input type="text" name="nama" value="" placeholder="Isi nama anda di sini" size="40" maxlength="40">
+        <br><br>
+        <label for="">Password Anda: </label>
+        <input type="password" name="sandi" value="" placeholder="Isi password anda di sini">
+        <br><br>
+        <label for="">Email Anda:</label>
+        <input type="email" name="emailku" value="" placeholder="nama_anda@gmail.com">
+        <br><br>
+        <label for="">Masukan warna favorit:</label>
+        <input type="color" name="warna">
+        <br><br>
+        <label for="">Masukan tanggal lahir:</label>
+        <input type="date" name="tgllahir">
+        <br><br>
+        <label for="">Stok Barang</label>
+        <input type="number" name="nilai" min="0" max="100">
+        <br><br>
+        <label for="">Upload gambar :</label>
+        <input type="file" name="file">
+        <br><br>
+        <label for="">Pilih Menu:</label><br>
+        <input type="checkbox" name="menu" value="menu1">Menu Pertama <br>
+        <input type="checkbox" name="menu" value="menu1">Menu Kedua <br>
+        <input type="checkbox" name="menu" value="menu1">Menu Ketiga <br>
+        <br><br>
+        <label for="">Jenis Kelamin :</label><br>
+        <input type="radio" name="jk" value="L">Laki-Laki <br>
+        <input type="radio" name="jk" value="P">Perempuan <br>
+        <br><br>
+        <label for="">Pilihan</label>
+        <select name="pilih" id="">
+            <option value="">Pilihannya Apa?</option>
+            <option value="1">Sarjana</option>
+            <option value="2">Diploma</option>
+            <option value="3">SMA/SMK</option>
+        </select>
+        <br><br>
+        <label for="">Kolom Komentar</label>
+        <textarea name="komentar" id="" cols="20" rows="10"></textarea>
+        <br><br>
+
+        <input type="submit" name="proses" value="Simpan">
+        <input type="reset" name="unproses" value="Batal">
+    </form>
+
+
+    <br><br><br>
+    <hr>
+
+    <table width="50%" align="center">
+        <tr>
+            <td>
+                <fieldset>
+                    <legend>Link</legend>
+                    <ul>
+                        <li>
+                            <a href="latihan1.html" target="_blank">Home</a>
+                        </li>
+                        <li>
+                            <a href="latihan2_table.html" target="_blank">Biodata</a>
+                        </li>
+                    </ul>
+                </fieldset>
+            </td>
+        </tr>
+    </table>
+  
+        <table border="1" cellpadding="10" width="50%" align="center">
+            <thead bgcolor="pink">  
+                <tr>
+                    <td colspan="2" align="center"><b>Latihan Form</b></td>
+                    <!-- <td>Latihan Form</td> -->
+                </tr>
+            </thead>
+
+            <tbody>
+                
+                <tr>
+                    <td>Nama</td>
+                    <td>
+                        <input type="text" name="nama" value="" placeholder="Isi nama anda di sini" size="40" maxlength="40">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        <input type="text" name="nama" value="" placeholder="Isi nama anda di sini" size="40" maxlength="40">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <input type="radio" name="jk" value="L">Male
+                        <input type="radio" name="jk" value="P">Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hobby</td>
+                    <td>
+                        <input type="checkbox" name="menu" value="menu1">Futsal <br>
+                        <input type="checkbox" name="menu" value="menu2">Menulis <br>
+                        <input type="checkbox" name="menu" value="menu3">Memasak <br>
+                        <input type="checkbox" name="menu" value="menu4">Membaca <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pendidikan Terakhir</td>
+                    <td>
+                        <select name="pilih" id="">
+                            <option value="">Pendidikan Terakhir</option>
+                            <option value="1">Sarjana</option>
+                            <option value="2">Diploma</option>
+                            <option value="3">SMA/SMK</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kolom Komentar</td>
+                    <td>
+                        <textarea name="komentar" id="" cols="20" rows="5"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tfoot bgcolor="pink">
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" name="proses" value="Simpan">
+                        <input type="reset" name="unproses" value="Batal">
+                    </td>
+                    <!-- <td></td> -->
+                </tr>
+            </tfoot>
+        </table>
+    
+</body>
+</html>
