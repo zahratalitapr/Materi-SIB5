@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Javascrip 2</title>
+</head>
+<body>
+    <script>
+        // diketahui
+        let pegawai = "Ridwan";
+        let jabatan = "Manager";
+        let status = "Menikah";
+        let gajiPokok = "";
+
+        // Tugas
+
+        document.write("<h1 align='center'> Data Pegawai </h1>");
+        document.write("<br> Nama Pegawai : " + pegawai + 
+                        "<br> Jabatan : " + jabatan +
+                        "<br> Status : " + status);
+
+        // menetukan gaji pokok
+        if (jabatan == "Manager"){
+            gajiPokok = 15000000;
+        } else if (jabatan == "Asisten Manager"){
+            gajiPokok = 10000000;
+        } else if (jabatan == "Staff"){
+            gajiPokok = 5000000;
+        } else {
+            gajiPokok = 0;
+        }
+
+        //menentukan tunjangan jabatan
+        let tunjanganJabatan = 0.15 * gajiPokok;
+
+        // menentukan BPJS
+        let bpjs = 0.10 * gajiPokok;
+
+        // menentukan tunjangan keluarga
+        // let tunjanganKeluarga = (status == "Menikah") ? ""
+    </script>
+</body>
+</html>
