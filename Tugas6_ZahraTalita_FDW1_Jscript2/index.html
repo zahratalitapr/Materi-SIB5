@@ -20,7 +20,7 @@
                         "<br> Jabatan : " + jabatan +
                         "<br> Status : " + status);
 
-        // menetukan gaji pokok
+        // menetukan dan menampilkan gaji pokok
         if (jabatan == "Manager"){
             gajiPokok = 15000000;
         } else if (jabatan == "Asisten Manager"){
@@ -30,15 +30,23 @@
         } else {
             gajiPokok = 0;
         }
+        document.write("<br> Pendapatan Gaji Pokok : Rp. " + gajiPokok + ".");
 
-        //menentukan tunjangan jabatan
+        //menentukan dan menmapilkan tunjangan jabatan
         let tunjanganJabatan = 0.15 * gajiPokok;
+        document.write("<br> Pendapatan Tunjangan Jabatan : Rp. " + tunjanganJabatan + ".");
 
-        // menentukan BPJS
+        // menentukan dan menampilkan BPJS
         let bpjs = 0.10 * gajiPokok;
+        document.write("<br> Pendapatan Tunjangan BPJS : Rp. " + bpjs + ".");
 
-        // menentukan tunjangan keluarga
-        // let tunjanganKeluarga = (status == "Menikah") ? ""
+        // menentukan dan menampilkan tunjangan keluarga
+        let tunjanganKeluarga = (status == "Menikah") ? 0.20 * gajiPokok : 0 * gajiPokok;
+        document.write("<br> Pendapatan Tunjangan Keluarga : Rp. " + tunjanganKeluarga + ".");
+
+        // menentukan dan menampilkan total gaji
+        let totalGaji = gajiPokok + tunjanganJabatan + bpjs + tunjanganKeluarga;
+        document.write("<br> Pendapatan Akumulasi Gaji : Rp. " + totalGaji + ".");
     </script>
 </body>
 </html>
