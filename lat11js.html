@@ -22,7 +22,7 @@
     <tbody>
         <script>
             var no = 1;
-            for (s of siswa){
+            for (let s of siswa){
                 let ket = (s.nilai >= 60) ? "Lulus" : "Gagal";
                 //if multi kondisi untuk mengetahui grande
                 if(s.nilai > 85 && s.nilai <= 100 ) grade = "A";
@@ -40,7 +40,7 @@
                 }
 
 
-                document.write(`<tr bgcolor="greebyellow">
+                document.write(`<tr bgcolor="greebyellow"/>
                     <td>${no++}</td>
                     <td>${s.nama}</td>
                     <td>${s.nilai}</td>
