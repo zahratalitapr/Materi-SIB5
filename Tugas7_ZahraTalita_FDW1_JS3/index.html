@@ -1,0 +1,85 @@
+<script>
+    let p1 = {nama: "Aba", kode:15};
+    let p2 = {nama: "Abi", kode:15};
+    let p3 = {nama: "Aca", kode:10};
+    let p4 = {nama: "Aci", kode:10};
+    let p5 = {nama: "Acu", kode:10};
+    let p6 = {nama: "Ada", kode:7};
+    let p7 = {nama: "Adi", kode:7};
+    let p8 = {nama: "Adu", kode:7};
+    let p9 = {nama: "Afa", kode:4};
+    let p10 = {nama: "Afu", kode:4};
+
+    let jabatan, gapok, tunJabatan, tunKesehatan, zakatProfesi
+
+
+    let pegawai = [p1,p2,p3,p4,p5,p6,p7,p8,p9,p10];
+</script>
+<table style="padding: 5px; text-align: center; width: 100%;">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Jabatan</th>
+            <th>Gaji Pokok</th>
+            <th>Tunjangan Jabatan</th>
+            <th>Tunjangan Kesehatan</th>
+            <th>Gaji Kotor</th>
+            <th>Agama</th>
+            <th>Zakat Profesi</th>
+            <th>Take Home Pay</th>
+        </tr>
+    </thead>
+    <tbody>
+        <script>
+            var no = 1;
+            for (p of pegawai){
+                if (p.kode === 15) jabatan ="Manager";
+                else if (p.kode === 10) jabatan = "Asisten Manager";
+                else if (p.kode === 7) jabatan = "Supervisor";
+                else if (p.kode === 4) jabatan = "Staff";
+                else jabatan = null;
+                
+                switch(jabatan){
+                    case "Manager" : gapok = 15000000; break;
+                    case "Asisten Manager" : gapok = 10000000; break;
+                    case "Supervisor" : gapok = 7000000; break;
+                    case "Staff" : gapok = 4000000; break;
+                    default : gapok = 0; break;
+                }
+            
+            tunJabatan = 0.20 * gapok;
+            tunKesehatan = 0.10 * gapok;
+            gajiKotor = gapok + tunJabatan + tunKesehatan;
+            
+            // menentukan ganjil, genap, dan agama
+            let agama = no % 2 == 1 ? 'Muslim' : 'Non-Muslim';
+            if (agama == "Muslim" && gapok >= 7000000){
+                zakatProfesi = 0.25 * gajiKotor;
+                color = 'yellow';
+            } else if (agama == "Non-Muslim"){
+                zakatProfesi = 0;
+                color = 'blue';
+            } else{
+                zakatProfesi = 0;
+                color = 'yellow';
+            }
+            
+            // menjumlahkan take home pay
+            takeHomePay = gajiKotor - zakatProfesi;
+            document.write(`<tr bgcolor="${color}"/>
+                    <td>${no++}</td>
+                    <td>${p.nama}</td>
+                    <td>${jabatan}</td>
+                    <td>Rp. ${gapok}</td>
+                    <td>Rp. ${tunJabatan}</td>
+                    <td>Rp. ${tunKesehatan}</td>
+                    <td>Rp. ${gajiKotor}</td>
+                    <td>${agama}</td>
+                    <td>Rp. ${zakatProfesi}</td>
+                    <td>Rp. ${takeHomePay}</td>   
+                    `)
+                }
+        </script>
+    </tbody>
+</table>

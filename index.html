@@ -1,0 +1,97 @@
+<script>
+    let p1 = { nama: "Ana", kode: 1 };
+    let p2 = { nama: "Bana", kode: 1 };
+    let p3 = { nama: "Cana", kode: 2 };
+    let p4 = { nama: "Dana", kode: 2 };
+    let p5 = { nama: "Fana", kode: 2 };
+    let p6 = { nama: "Gana", kode: 3 };
+    let p7 = { nama: "Hana", kode: 3 };
+    let p8 = { nama: "Jana", kode: 3 };
+    let p9 = { nama: "Kana", kode: 4 };
+    let p10 = { nama: "Lana", kode: 4 };
+  
+    let pegawaiArray = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10];
+  
+    var num = 1;
+    var tableBody = "";
+  
+    for (let i = 0; i < pegawaiArray.length; i++) {
+      let p = pegawaiArray[i];
+      let jabatan, gapok, tunjab, tunkes, gajiKotor, agama, zakatProfesi, takeHomePay, color;
+  
+      // Menentukan jabatan
+      switch (p.kode) {
+        case 1:
+          jabatan = "Manager";
+          break;
+        case 2:
+          jabatan = "Asisten Manager";
+          break;
+        case 3:
+          jabatan = "Supervisor";
+          break;
+        case 4:
+          jabatan = "Staff";
+          break;
+        default:
+          jabatan = "Tidak Diketahui";
+      }
+  
+      // Menentukan gaji pokok
+      switch (jabatan) {
+        case "Manager":
+          gapok = 15000000;
+          break;
+        case "Asisten Manager":
+          gapok = 10000000;
+          break;
+        case "Supervisor":
+          gapok = 7000000;
+          break;
+        case "Staff":
+          gapok = 4000000;
+          break;
+        default:
+          gapok = 0;
+      }
+  
+      // Menentukan tunjangan jabatan dan tunjangan kesehatan
+      tunjab = 0.2 * gapok;
+      tunkes = 0.1 * gapok;
+  
+      // Menentukan gaji kotor
+      gajiKotor = gapok + tunjab + tunkes;
+  
+      // Menentukan agama dan warna baris
+      agama = num % 2 === 0 ? "Non Muslim" : "Muslim";
+      color = agama === "Non Muslim" ? "blue" : "yellow";
+  
+      // Menghitung zakat profesi
+      if (agama === "Muslim" && gajiKotor >= 7000000) {
+        zakatProfesi = 0.025 * gajiKotor;
+      } else {
+        zakatProfesi = 0;
+      }
+  
+      // Menghitung take home pay
+      takeHomePay = gajiKotor - zakatProfesi;
+  
+      // Membuat baris tabel
+      tableBody += `
+        <tr bgcolor="${color}">
+          <td>${num++}</td>
+          <td>${p.nama}</td>
+          <td>${jabatan}</td>
+          <td>${gapok}</td>
+          <td>${tunkes}</td>
+          <td>${tunjab}</td>
+          <td>${agama}</td>
+          <td>${zakatProfesi}</td>
+          <td>${takeHomePay}</td>
+        </tr>`;
+    }
+  
+    // Menampilkan tabel ke dalam dokumen HTML
+    document.querySelector("tbody").innerHTML = tableBody;
+  </script>
+  
