@@ -33,6 +33,7 @@
     <tbody>
         <script>
             var no = 1;
+            // menentukan jabatan
             for (p of pegawai){
                 if (p.kode === 15) jabatan ="Manager";
                 else if (p.kode === 10) jabatan = "Asisten Manager";
@@ -40,6 +41,7 @@
                 else if (p.kode === 4) jabatan = "Staff";
                 else jabatan = null;
                 
+                // menentukan gajipokok
                 switch(jabatan){
                     case "Manager" : gapok = 15000000; break;
                     case "Asisten Manager" : gapok = 10000000; break;
@@ -47,7 +49,7 @@
                     case "Staff" : gapok = 4000000; break;
                     default : gapok = 0; break;
                 }
-            
+            // menetukan tunjab, tunkes, dan gaji kotor
             tunJabatan = 0.20 * gapok;
             tunKesehatan = 0.10 * gapok;
             gajiKotor = gapok + tunJabatan + tunKesehatan;
@@ -67,6 +69,8 @@
             
             // menjumlahkan take home pay
             takeHomePay = gajiKotor - zakatProfesi;
+
+            // mencetak table
             document.write(`<tr bgcolor="${color}"/>
                     <td>${no++}</td>
                     <td>${p.nama}</td>
