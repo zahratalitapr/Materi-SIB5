@@ -11,10 +11,14 @@
             <tr>
                 <th colspan="2">form pembelanjaan</th>
             </tr>
+            
+            <!-- kolom input nama -->
             <tr>
                 <td><label for="">Name : </label></td>
                 <td><input type="text" name="nama" placeholder="masukan nama anda"></td>
             </tr>
+
+            <!-- kolom memilih produk -->
             <tr>
                 <td><label for="">Produk : </label></td>
                 <td>
@@ -26,16 +30,20 @@
                     </select>
                 </td>
             </tr>
+
+            <!-- kolom memasukan jumlah produk -->
             <tr>
                 <td><label for="">Jumlah Pembelian (pcs) : </label></td>
                 <td><input type="number" name="jumlah" id="" placeholder="Jumlah(pcs) Produk"></td>
             </tr>
+
+            <!-- tolmbol beli -->
             <tr>
                 <th colspan="2"><button type="button" onclick="dataPembeli()">Beli</button></th>
             </tr>
         </table>
     </form>
-    <p id="hasil"></p>
+
     <script src="script.js">
     </script>
 </body>

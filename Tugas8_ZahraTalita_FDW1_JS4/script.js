@@ -5,6 +5,7 @@ function dataPembeli() {
     let jumlah = form.jumlah.value;
     let hargaSatuan = 0;
 
+    // menentukan harga produk
     switch (produk) {
         case "TV": hargaSatuan = 2000000; break;
         case "AC": hargaSatuan = 3000000; break;
@@ -12,8 +13,10 @@ function dataPembeli() {
         default: hargaSatuan = 0; break;
     }
 
+    // menjumlahkan harga kotor
     const hargaKotor = hargaSatuan * jumlah;
 
+    // menentukan diskon
     let diskon = 0;
 
     if (produk === "Kulkas" && jumlah >= 3) {
@@ -24,9 +27,11 @@ function dataPembeli() {
         diskon = 0.1 * hargaKotor;
     }
 
+    // menentukan ppn dan harga bayar
     const ppn = 0.1 * (hargaKotor - diskon);
     const hargaBayar = (hargaKotor - diskon) + ppn;
     
+    // mencetak data
     let proses = `Input Data
      Nama : ${nama}
      Produk beli : ${produk}
