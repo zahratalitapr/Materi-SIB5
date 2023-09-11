@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcion</title>
+</head>
+<body>
+    <script>
+        // membuat dunction void => funcyion ysng tidak mengembalikan nilai
+        function salam(nama){
+            document.write(`Apa Kabar ${nama} ? <br>`);
+        }
+        let siswa = "Fawwaz";
+        salam(siswa);
+        salam("innaya");
+    </script>
+    <script>
+        // fungsi return => yang mengembalikan nilai
+        function tambah(a, b){
+            let c = a + b;
+            return c;
+        }
+
+        let x = 20;
+        let y = 30;
+        document.write(`Hasil 50 + 30 = ${tambah(50,30)} <br/>`)
+    </script>
+</body>
+</html>

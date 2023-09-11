@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fungsi dan event hendler</title>
+</head>
+<body>
+    <form id="frm">
+
+        nama : <input type="text" name="nama" placeholder="silahkan masukan nama anda">
+        kelas : <input type="text" name="kelas" placeholder="silahkan masukan kelas anda">
+        <input type="button" name="proses" value="salam" onclick="salam()">
+        <!-- contoh ebent handler   -->
+
+        <h2 id="hasil"></h2>
+    </form>
+    <script>
+        function salam(){
+            let siswa = document.getElementById('frm').nama.value;
+            let kelas = document.getElementById('frm').kelas.value;
+            let input = 'selama pagi ' + siswa + '<br> kelas ' + kelas;  
+            let no_input = 'maaf nama dan kelas anda belum terisi';
+            let hasil = (siswa && kelas != ' ') ? input : no_input;
+
+            document.getElementById('hasil').innerHTML = hasil;
+        }
+    </script>
+</body>
+</html>
