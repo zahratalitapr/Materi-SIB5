@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas Javascript 5 | Zahra Talia</title>
+  </head>
+  <body>
+    <script>
+        // buat class gempa dengan member class dan variable
+      class Gempa {
+        constructor(lokasi, skala) {
+          this.lokasi = lokasi;
+          this.skala = skala;
+        }
+
+        // membuat fungsi dampak
+        dampak() {
+            
+          var dampakGempa = parseFloat();
+
+          if (this.skala >= 0 && this.skala <= 2) {
+            dampakGempa = "Tidak terasa";
+          } else if (this.skala > 2 && this.skala <= 4) {
+            dampakGempa = "Bagunan retak - retak";
+          } else if (this.skala > 4 && this.skala <= 6) {
+            dampakGempa = "Bagunan roboh";
+          } else if (this.skala >= 6) {
+            dampakGempa = "Bagunan roboh dan berpontensi tsunami";
+          } else {
+            dampakGempa = "Tidak terjadi gempa";
+          }
+
+          document.writeln("Lokasi gempa berada di : ", this.lokasi, "<br>");
+          document.writeln("Besar skala gempa : ", this.skala, "<br>");
+          document.writeln("Dampak dari gempa : ", dampakGempa, "<br>");
+          document.writeln("-----------------------------------------------<br>");
+        }
+      }
+
+    //   5 informasi gempa
+    let gem1 = new Gempa ('Jakarta', 1.4);
+    let gem2 = new Gempa ('Belanda', 2.3);
+    let gem3 = new Gempa ('China', 5.4);
+    let gem4 = new Gempa ('Jepang', 6.7);
+    let gem5 = new Gempa ('Nepal', 4);
+
+    // cetak gempa
+    gem1.dampak()
+    gem2.dampak()
+    gem3.dampak()
+    gem4.dampak()
+    gem5.dampak()
+    </script>
+  </body>
+</html>
