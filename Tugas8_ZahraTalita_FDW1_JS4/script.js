@@ -1,10 +1,18 @@
+let form = document.getElementById('form');
+
+// dibahas pas zoom 13 / 9
+let productOption = ["TV", "AC", "Kulkas"];
+let selectProduct = `<option value=""> Pilihan Product </option>`;
+for (let p in  productOption){
+    selectProduct += `<option value="${productOption[p]}">${productOption[p]}</option>`
+}
+form.produk.innerHTML = selectProduct;
+
 function dataPembeli() {
-    let form = document.getElementById('form');
     let nama =  form.nama.value;
     let produk =  form.produk.value;
     let jumlah = form.jumlah.value;
     let hargaSatuan = 0;
-
     // menentukan harga produk
     switch (produk) {
         case "TV": hargaSatuan = 2000000; break;
@@ -32,16 +40,30 @@ function dataPembeli() {
     const hargaBayar = (hargaKotor - diskon) + ppn;
     
     // mencetak data
-    let proses = `Input Data
-     Nama : ${nama}
-     Produk beli : ${produk}
-     Harga Satuan : ${hargaSatuan}
-     Jumlah produk (pcs) : ${produk}
-     Harga kotor : ${hargaKotor}
-     Diskon : ${diskon}
-     PPN : ${ppn}
-     Harga Bayar : ${hargaBayar}
-    `;
+    // pembahasan bareng pa arip
+    swal (
+
+        `
+         Nama : ${nama}
+         Produk beli : ${produk}
+         Harga Satuan : ${hargaSatuan}
+         Jumlah produk (pcs) : ${produk}
+         Harga kotor : ${hargaKotor}
+         Diskon : ${diskon}
+         PPN : ${ppn}
+         Harga Bayar : ${hargaBayar}
+        `
+    )
+    // let proses = `Input Data
+    //  Nama : ${nama}
+    //  Produk beli : ${produk}
+    //  Harga Satuan : ${hargaSatuan}
+    //  Jumlah produk (pcs) : ${produk}
+    //  Harga kotor : ${hargaKotor}
+    //  Diskon : ${diskon}
+    //  PPN : ${ppn}
+    //  Harga Bayar : ${hargaBayar}
+    // `;
 
     alert(proses);
 }
