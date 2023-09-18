@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script text="" src="js/code.jquery.com_jquery-3.7.1.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    
+<button id="helloBtn">Say hello</button>
+
+<p>contoh slide down menggunakan jquery</p>
+    <script>
+      // Event binding using addEventListener
+      var helloBtn = document.getElementById("helloBtn");
+
+      helloBtn.addEventListener(
+        "click",
+        function (event) {
+          alert("Hello.");
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

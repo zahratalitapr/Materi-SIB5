@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/code.jquery.com_jquery-3.7.1.min.js"></script>
+    <script type="text/Javascript">
+        $("document").ready(function(){
+            $("#div1").mouseover(function(){
+                $(this).css({
+                    background : "url('https://awsimages.detik.net.id/community/media/visual/2022/02/04/ayam-betina.jpeg?w=600&q=90')"
+                });
+            });
+            $("div").mouseout(function(){
+                $(this).css({
+                    background: "#00000"
+                });
+            });
+            $("#div2").mouseover(function(){
+                $(this).css({
+                    background: "url('https://awsimages.detik.net.id/community/media/visual/2022/02/04/ayam-betina.jpeg?w=600&q=90')"
+                });
+            });
+            $("#div3").mouseover(function(){
+                $(this).css({
+                    background: "url('https://awsimages.detik.net.id/community/media/visual/2022/02/04/ayam-betina.jpeg?w=600&q=90')"
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <h2>Letakan kursor ke masing - masing kotak untuk melihat gambar</h2>
+
+    <div id="div1">hewan ayam</div>
+    <div id="div2">hewan bebek</div>
+    <div id="div3">hewan burung</div>
+</body>
+</html>
