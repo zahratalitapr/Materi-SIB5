@@ -12,7 +12,9 @@ $("document").ready(function() {
     $("#motto").click(function (){
         $(this).html(
             `<p>
-               "Dengan pendidikan kamu bisa mengubah dunia"
+               Dengan pendidikan kamu bisa mengubah dunia
+               <br>
+               alsannya : karna dengan belajar kita bisa mengetahui banyak ilmu yang akan berguna bagi masa depan
             </p>    
             `
         );
@@ -21,7 +23,9 @@ $("document").ready(function() {
     $("#skill").click(function (){
         $(this).html(
             `<p>
-                Saya suka belajar, tetapi saya tidak terlalu ahli.
+                Saya suka belajar, tetapi saya tidak terlalu ahli. 
+                <br>
+                pengalaman saya membuat desain ui/ux saat uas dan mendapatkan nilai hampir sempurna
             </p>
             `
         )
