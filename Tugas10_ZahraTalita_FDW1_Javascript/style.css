@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    margin-top: 10%;
+
+}
+
+.container .card{
+    border: 2px solid transparent;
+    width: 33.3%;
+    height: 350px;
+    margin: 1.2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.container .card p{
+    text-align: center;
+    padding-top: 30%;
+}
