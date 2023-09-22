@@ -30,7 +30,7 @@
 
         <!-- input nama -->
         <label for="">Nama : </label>
-        <input type="text" name="nama" id=""><br>
+        <input type="text" name="nama" id="" require><br>
 
         <!-- seleksi pekerjaan -->
         <label for="">Pekerjaan : </label>
