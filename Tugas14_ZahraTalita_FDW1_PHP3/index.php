@@ -56,6 +56,8 @@
         <tbody>
             <?php $no=1;
             foreach ($data_mahasiswa as $dm) {
+
+                // menentukan grade dengan if multi kondisi
                 if (($dm ['nilai'] == 100) || ($dm ['nilai'] > 85)){
                     $dm ['Grade'] = 'A';
                 }  else if (($dm ['nilai'] == 85) || ($dm ['nilai'] > 75)) {
@@ -68,6 +70,7 @@
                     $dm ['Grade'] = 'E';
                 } else { $dm ['Grade'] = '';}
                 
+                // menentukan predikat dengan switch case
                 switch ($dm ['Grade']) {
                     case 'A' : $dm ['predikat'] = "Sempurna"; break;
                     case 'B' : $dm ['predikat'] = "Baik"; break;
@@ -77,6 +80,7 @@
                     default: $dm ['predikat'] = ""; break;
                 }
 
+                // keterangan lulus
                 $dm ['ket'] = $dm['nilai'] >= 60 ? 'LULUS' : 'TIDAK LULUS';
                 ?>
             <tr align ="center">
