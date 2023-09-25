@@ -56,7 +56,7 @@ $keterangan = [
                 $harga_diskon = $diskon * $bruto;
                 $harga_bayar = $bruto - $harga_diskon;
                 ?>
-                <tr>
+                <tr text-align="center">
                     <td><?= $no ++ ?></td>
                     <td><?= $buah ['kode']?></td>
                     <td><?= $buah ['buah']?></td>
