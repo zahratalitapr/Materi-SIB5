@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container.admin{
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 80px 0;
+}
+
+.container.login{
+    text-align: center;
+    border: 1px solid black;
+    height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    border-color: #007BFF;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
