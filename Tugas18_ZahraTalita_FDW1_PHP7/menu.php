@@ -51,16 +51,16 @@
                                         </nav>
                                     </div>
 
-                                    <!-- Menu information -->
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseInfo" aria-expanded="false" aria-controls="pagesCollapseInfo">
                                         Information
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseInfo" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionInfo">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="about.html">About</a>
-                                            <a class="nav-link" href="contact.html">Contact</a>
-                                            <a class="nav-link" href="data-table.html">Data</a>
+                                            <a class="nav-link" href="about.php">About</a>
+                                            <a class="nav-link" href="contact.php">Contact</a>
+                                            <a class="nav-link" href="data-table.php">Data</a>
+                                            <a class="nav-link" href="login.php">Login</a>
                                         </nav>
                                     </div>
                                 </nav>
