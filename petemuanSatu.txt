@@ -1,0 +1,43 @@
+
+
+//melihat se;uruh database
+SHOW DATABASES:
+
+//membuat database baru
+CREATE DATABASE namadatabase;
+
+//membuat table
+CREATE TABLE jenis (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nama varchar(30) NOT NULL UNIQUE
+);
+
+//menggunakan database 
+use nama database;
+
+id/nama, adalah nama kolom / header kolom,
+int adalah tipe data,
+PRIMARY KEY adalah key
+AUTO_INCREMENT adalah untuk penomoran automatisasi
+NOT NULL menandakan kolom tersebut tidak boleh kosong jika data mulai diisi
+UNIQUE adalah key untuk kolom agar data tidak boleh sama
+
+Desc jenis;
+//membuar table relasi (produk ke jenis)
+CREATE TABLE produk (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nama varchar(30) NOT NULL UNIQUE,
+    harga double NOT NULL,
+    stok int NOT NULL,
+    idjenis int NOT NULL REFERENCES jenis(id),
+    foto varchar (30));
+
+//Do alter menambahkan kolom baru
+ALTER TABLE jenis ADD COLUMN IF NOT EXISTS
+keterangan varchar(50) AFTER nama;
+
+//mengubah nama kolom
+ALTER TABLE namaTable CHANGE namaDatabaseLama namaDatabaseBaru (length);
+
+//merubah tipe data
+ALTER TABLE namaTable MODIFY 

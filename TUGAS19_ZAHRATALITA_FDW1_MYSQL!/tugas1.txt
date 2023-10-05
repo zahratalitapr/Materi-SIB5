@@ -1,0 +1,85 @@
+Microsoft Windows [Version 10.0.22621.2283]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Zahra Talita>cd \xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 92
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| pegawaisib5        |
+| performance_schema |
+| phpmyadmin         |
+| portipolio         |
+| test               |
+| tokosib5           |
++--------------------+
+8 rows in set (0.001 sec)
+
+MariaDB [(none)]> create database dbpegawai;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> use dbpegawai;
+Database changed
+MariaDB [dbpegawai]> show tables;
+Empty set (0.001 sec)
+
+MariaDB [dbpegawai]> create table pegawai (
+    -> id int primary key auto_increment,
+    -> nip char(5) not null unique,
+    -> nama varchar(30) not null,
+    -> gender enum("p","l"),
+    -> umur int not null,
+    -> berat_badan fluat);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 7
+MariaDB [dbpegawai]> berat_badan float);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'berat_badan float)' at line 1
+MariaDB [dbpegawai]> create table pegawai (
+    -> id int primary key auto_increment,
+    -> nip char(5) not null unique,
+    -> nama varchar(30) not null,
+    -> gender enum('p','l'),
+    -> berat_badan float);
+Query OK, 0 rows affected (0.056 sec)
+
+MariaDB [dbpegawai]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| dbpegawai          |
+| information_schema |
+| mysql              |
+| pegawaisib5        |
+| performance_schema |
+| phpmyadmin         |
+| portipolio         |
+| test               |
+| tokosib5           |
++--------------------+
+9 rows in set (0.002 sec)
+
+MariaDB [dbpegawai]> desc pegawai;
++-------------+---------------+------+-----+---------+----------------+
+| Field       | Type          | Null | Key | Default | Extra          |
++-------------+---------------+------+-----+---------+----------------+
+| id          | int(11)       | NO   | PRI | NULL    | auto_increment |
+| nip         | char(5)       | NO   | UNI | NULL    |                |
+| nama        | varchar(30)   | NO   |     | NULL    |                |
+| gender      | enum('p','l') | YES  |     | NULL    |                |
+| berat_badan | float         | YES  |     | NULL    |                |
++-------------+---------------+------+-----+---------+----------------+
+5 rows in set (0.013 sec)
+
+MariaDB [dbpegawai]>
