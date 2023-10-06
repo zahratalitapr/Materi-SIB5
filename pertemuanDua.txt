@@ -1,0 +1,41 @@
+//select dasar pada query
+//ini tidak menyebutkan nama kolomnya
+INSERT INTO jenis_produk VALUES
+('','Elektronik'), ('','Funiture'), ('','Makanan'), ('','Minuman');
+
+//INSERT INTO menyebutkan nama kolomnya
+INSERT into produk (nama, harga, stok, idjenis, foto) VALUES ('tv',200000,3,1,'tv.jpg'), ('meja',1000000,3,2,'meja.jpg');
+
+//update data dalam sebuah kolom
+UPDATE produk SET nama = 'TV LCD', harga = 4000000 WHERE id = 1;
+//jdi yang di update ini table produk dengan perubahan pada nama dan harga
+//dimana data yang di ubah adalah id yang nomor 1
+
+//untuk menghapus kolom
+DELETE FROM produk WHERE id = 2;
+
+//memilih product
+SELECT nama, harga, stok FROM produk;
+
+//untuk mencari produk dengan stok dibawah 40
+SELECT nama, harga, stok FROM produk WHERE stok < 40;
+
+//memasukan data baru pada produk
+INSERT INTO produk (nama, harga, stok, idjenis, foto) VALUES 
+('Nasi Goreng',20000,10,3,'nasi'),
+('Coca-cola',3000,20,4,'cola'),
+('Kursi',400000,20,2,'kursi'),
+('Handphone',5000000,10,1,'hp'),
+('Sprite',4000,4,4,'sprite');
+
+//mencari pada tbale produk yang stoknya yang namanya sprite
+SELECT * FROM `produk` WHERE nama='Sprite'
+
+//mencari pada table produk yang jumlah stok <= 10
+SELECT * FROM produk WHERE stok <= 10;
+
+//mengurutkan harga pada table dari yang terbesar
+SELECT * FROM produk ORDER BY harga DESC;
+
+mengurtkan harga pada table dari yang terkencil
+SELECT * FROM produk ORDER BY harga ASC;
