@@ -1,0 +1,57 @@
+//SOAL 2.4
+
+//1.	Tampilkan 2 data produk termahal
+MariaDB [dbpos]> select * from produk order by harga_beli desc limit 2;
++----+------+-------------------+------------+------------+------+----------+-----------------+
+| id | kode | nama              | harga_beli | harga_jual | stok | min_stok | jenis_produk_id |
++----+------+-------------------+------------+------------+------+----------+-----------------+
+|  1 | TV01 | Televisi 21 Inch  |   35000000 |   50400000 |    5 |        2 |               1 |
+|  2 | TV02 | Televissi 40 Inch |    7000000 |    9600000 |    4 |        2 |               1 |
++----+------+-------------------+------------+------------+------+----------+-----------------+
+2 rows in set (0.015 sec)
+
+//2.	Tampilkan produk yang paling murah
+MariaDB [dbpos]> select min(harga_jual) from produk;
++-----------------+
+| min(harga_jual) |
++-----------------+
+|            3500 |
++-----------------+
+1 row in set (0.001 sec)
+
+//3.	Tampilkan produk yang stoknya paling banyak
+MariaDB [dbpos]> select max(stok) from produk;
++-----------+
+| max(stok) |
++-----------+
+|        25 |
++-----------+
+1 row in set (0.003 sec)
+
+//4.	Tampilkan dua produk yang stoknya paling sedikit
+MariaDB [dbpos]> select * from produk order by stok asc limit 2;
++----+------+-------------------+------------+------------+------+----------+-----------------+
+| id | kode | nama              | harga_beli | harga_jual | stok | min_stok | jenis_produk_id |
++----+------+-------------------+------------+------------+------+----------+-----------------+
+|  2 | TV02 | Televissi 40 Inch |    7000000 |    9600000 |    4 |        2 |               1 |
+|  4 | M001 | Meja Makan        |     500000 |     600000 |    4 |        3 |               2 |
++----+------+-------------------+------------+------------+------+----------+-----------------+
+2 rows in set (0.012 sec)
+
+5.	Tampilkan pelanggan yang paling muda
+MariaDB [dbpos]> select max(tgl_lahir) from pelanggan;
++----------------+
+| max(tgl_lahir) |
++----------------+
+| 2010-01-01     |
++----------------+
+1 row in set (0.007 sec)
+
+6.	Tampilkan pelanggan yang paling tua
+MariaDB [dbpos]> select min(tgl_lahir) from pelanggan;
++----------------+
+| min(tgl_lahir) |
++----------------+
+| 1950-02-02     |
++----------------+
+1 row in set (0.000 sec)
