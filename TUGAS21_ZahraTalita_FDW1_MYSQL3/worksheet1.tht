@@ -1,0 +1,19 @@
+//membuat table vendor
+CREATE TABLE vendor (
+    id int AUTO_INCREMENT PRIMARY key not null,
+    nomor varchar(4) not null,
+    nama varchar(40) not null,
+    kota varchar(30) not null,
+    kontak varchar(30) not null
+);
+
+//membuat table pembelian
+CREATE TABLE pembelian(
+    id int AUTO_INCREMENT PRIMARY KEY not null,
+    tanggal varchar(10),
+    nomor varchar(10),
+    produk_id int(11),
+    jumlah int(11),
+    harga double,
+    vendor_id int not null REFERENCES vendor(id)
+);
