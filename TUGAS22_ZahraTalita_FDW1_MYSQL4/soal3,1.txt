@@ -1,0 +1,91 @@
+//1.	Tampilkan produk yang asset nya diatas 20jt
+//- Menghitung total asset
+MariaDB [dbpos]> select sum(harga_beli*stok) as total from produk;
++-----------+
+| total     |
++-----------+
+| 271438000 |
++-----------+
+1 row in set (0.023 sec)
+
+//- Jawaban no 1
+MariaDB [dbpos]> select * from produk where harga_beli * stok > 20000000;
++----+-------+-------------------+------------+------------+------+----------+-----------------+
+| id | kode  | nama              | harga_beli | harga_jual | stok | min_stok | jenis_produk_id |
++----+-------+-------------------+------------+------------+------+----------+-----------------+
+|  1 | TV01  | Televisi 21 Inch  |   35000000 |   50400000 |    5 |        2 |               1 |
+|  2 | TV02  | Televissi 40 Inch |    7000000 |    9600000 |    4 |        2 |               1 |
+|  3 | k001  | Kulkas 2 Pintu    |    3500000 |    4600000 |    6 |        2 |               1 |
+| 14 | MN001 | Monitor           |    1900000 |    2500000 |   11 |        2 |               5 |
++----+-------+-------------------+------------+------------+------+----------+-----------------+
+4 rows in set (0.010 sec)
+
+//2.	Tampilkan data produk beserta selisih stok dengan minimal stok
+MariaDB [dbpos]> select sum(stok-min_stok) as selisih from produk;
++---------+
+| selisih |
++---------+
+|      77 |
++---------+
+1 row in set (0.004 sec)
+
+//3.	Tampilkan total asset produk secara keseluruhan
+MariaDB [dbpos]> select sum(stok) as total_asset from produk;
++-------------+
+| total_asset |
++-------------+
+|         121 |
++-------------+
+1 row in set (0.001 sec)
+
+//4.	Tampilkan data pelanggan yang lahirnya antara tahun 1980 sampai 1990
+MariaDB [dbpos]> select * from pelanggan where year(tgl_lahir) between 1980 and 1990;
++----+------+---------------+------+-----------+------------+--------------------+----------+
+| id | kode | nama          | jk   | tmp_lahir | tgl_lahir  | email              | kartu_id |
++----+------+---------------+------+-----------+------------+--------------------+----------+
+|  8 | C003 | Sekar         | P    | Kediri    | 1983-02-02 | sekar@gmail.com    |        0 |
+|  9 | C004 | Swandaru Geni | L    | Kediri    | 1981-01-04 | swandaru@gmail.com |        0 |
+| 13 | C008 | Rudi          | l    | Bandung   | 1988-01-09 | rudi@gmail.com     |        4 |
+| 14 | C009 | Dewi          | p    | Ciamis    | 1980-06-26 | dewi@gmail.com     |        1 |
++----+------+---------------+------+-----------+------------+--------------------+----------+
+4 rows in set (0.003 sec)
+
+//5.	Tampilkan data pelanggan yang lahirnya tahun 1998, karna 98 gak ada jdi ganti ke 88
+MariaDB [dbpos]> select * from pelanggan where year(tgl_lahir)=1988;
++----+------+------+------+-----------+------------+----------------+----------+
+| id | kode | nama | jk   | tmp_lahir | tgl_lahir  | email          | kartu_id |
++----+------+------+------+-----------+------------+----------------+----------+
+| 13 | C008 | Rudi | l    | Bandung   | 1988-01-09 | rudi@gmail.com |        4 |
++----+------+------+------+-----------+------------+----------------+----------+
+1 row in set (0.001 sec)
+
+//6.	Tampilkan data pelanggan yang berulang tahun bulan agustus, karna agustus gk ada jdi januari
+MariaDB [dbpos]> select * from pelanggan where month(tgl_lahir)=01;
++----+------+---------------+------+-----------+------------+--------------------+----------+
+| id | kode | nama          | jk   | tmp_lahir | tgl_lahir  | email              | kartu_id |
++----+------+---------------+------+-----------+------------+--------------------+----------+
+|  1 | c001 | Agung Sedayu  | L    | Solo      | 2010-01-01 | sedayu@gmail.com   |        0 |
+|  9 | C004 | Swandaru Geni | L    | Kediri    | 1981-01-04 | swandaru@gmail.com |        0 |
+| 11 | C006 | Pradita       | p    | Lombok    | 2002-01-15 | pradita@gmail.com  |        2 |
+| 13 | C008 | Rudi          | l    | Bandung   | 1988-01-09 | rudi@gmail.com     |        4 |
+| 15 | C010 | Hana          | p    | Depok     | 2003-01-23 | hana@gmail.com     |        2 |
++----+------+---------------+------+-----------+------------+--------------------+----------+
+5 rows in set (0.001 sec)
+
+//7.	Tampilkan data pelanggan : nama, tmp_lahir, tgl_lahir dan umur (selisih tahun sekarang dikurang tahun kelahiran)
+MariaDB [dbpos]> select nama, tmp_lahir, tgl_lahir, (year(now())-year(tgl_lahir)) as umur from pelanggan;
++---------------+------------+------------+------+
+| nama          | tmp_lahir  | tgl_lahir  | umur |
++---------------+------------+------------+------+
+| Agung Sedayu  | Solo       | 2010-01-01 |   13 |
+| Pandan Wangi  | Yogyakarta | 1950-02-02 |   73 |
+| Sekar         | Kediri     | 1983-02-02 |   40 |
+| Swandaru Geni | Kediri     | 1981-01-04 |   42 |
+| larisa        | Jakarta    | 2001-12-12 |   22 |
+| Pradita       | Lombok     | 2002-01-15 |   21 |
+| Pradipta      | Papua      | 1970-06-06 |   53 |
+| Rudi          | Bandung    | 1988-01-09 |   35 |
+| Dewi          | Ciamis     | 1980-06-26 |   43 |
+| Hana          | Depok      | 2003-01-23 |   20 |
++---------------+------------+------------+------+
+10 rows in set (0.006 sec)

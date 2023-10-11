@@ -1,0 +1,82 @@
+//1.	Tampilkan data produk : id, nama, stok dan informasi jika stok telah sampai batas minimal atau kurang dari minimum stok dengan informasi ‘segera belanja’ jika tidak ‘stok aman’.
+MariaDB [dbpos]> select id, nama, stok, min_stok,
+    -> case
+    -> when stok <= min_stok then 'segera belanja'
+    -> else 'stok aman'
+    -> end as informasi
+    -> from produk;
++----+---------------------+------+----------+----------------+
+| id | nama                | stok | min_stok | informasi      |
++----+---------------------+------+----------+----------------+
+|  1 | Televisi 21 Inch    |    5 |        2 | stok aman      |
+|  2 | Televissi 40 Inch   |    4 |        2 | stok aman      |
+|  3 | Kulkas 2 Pintu      |    6 |        2 | stok aman      |
+|  4 | Meja Makan          |    4 |        3 | stok aman      |
+|  5 | Teh Kotak           |    6 |       10 | segera belanja |
+|  6 | Meja Belajar        |    5 |        2 | stok aman      |
+|  7 | Kursi Serbaguna     |   10 |        4 | stok aman      |
+|  8 | Kue Nastar          |    5 |        1 | stok aman      |
+|  9 | Martabak            |   10 |        1 | stok aman      |
+| 10 | Bak Lava            |    5 |        1 | stok aman      |
+| 11 | Good Day            |   10 |        5 | stok aman      |
+| 12 | Teh Botol           |   25 |        5 | stok aman      |
+| 13 | Mechanical Keyboard |    5 |        2 | stok aman      |
+| 14 | Monitor             |   11 |        2 | stok aman      |
+| 15 | Mouse               |   10 |        2 | stok aman      |
++----+---------------------+------+----------+----------------+
+15 rows in set (0.000 sec)
+
+//2.	Tampilkan data pelanggan: id, nama, umur dan kategori umur : jika umur < 17 → ‘muda’ , 17-55 → ‘Dewasa’, selainnya ‘Tua’
+MariaDB [dbpos]> select id, nama,
+    -> timestampdiff(year, tgl_lahir, curdate()) as umur
+    -> ,
+    -> case
+    -> when timestampdiff(year, tgl_lahir, curdate()) < 17 then 'muda'
+    -> when timestampdiff(year, tgl_lahir, curdate()) between 17 and 55 then 'dewasa'
+    -> else 'tua'
+    -> end as kategori_umur
+    -> from pelanggan;
++----+---------------+------+---------------+
+| id | nama          | umur | kategori_umur |
++----+---------------+------+---------------+
+|  1 | Agung Sedayu  |   13 | muda          |
+|  7 | Pandan Wangi  |   73 | tua           |
+|  8 | Sekar         |   40 | dewasa        |
+|  9 | Swandaru Geni |   42 | dewasa        |
+| 10 | larisa        |   21 | dewasa        |
+| 11 | Pradita       |   21 | dewasa        |
+| 12 | Pradipta      |   53 | dewasa        |
+| 13 | Rudi          |   35 | dewasa        |
+| 14 | Dewi          |   43 | dewasa        |
+| 15 | Hana          |   20 | dewasa        |
++----+---------------+------+---------------+
+10 rows in set (0.004 sec)
+
+//3.	Tampilkan data produk: id, kode, nama, dan bonus untuk kode ‘TV01’ →’DVD Player’ , ‘K001’ → ‘Rice Cooker’ selain dari diatas ‘Tidak Ada’
+MariaDB [dbpos]> select id, kode, nama,
+    -> case
+    -> when kode = 'tv01' then 'DVD PLAYER'
+    -> when kode = 'k001' then 'RICE COOKER'
+    -> else 'Tidak Ada'
+    -> end as bonus
+    -> from produk;
++----+-------+---------------------+-------------+
+| id | kode  | nama                | bonus       |
++----+-------+---------------------+-------------+
+|  1 | TV01  | Televisi 21 Inch    | DVD PLAYER  |
+|  2 | TV02  | Televissi 40 Inch   | Tidak Ada   |
+|  3 | k001  | Kulkas 2 Pintu      | RICE COOKER |
+|  4 | M001  | Meja Makan          | Tidak Ada   |
+|  5 | TK01  | Teh Kotak           | Tidak Ada   |
+|  6 | M002  | Meja Belajar        | Tidak Ada   |
+|  7 | K001  | Kursi Serbaguna     | RICE COOKER |
+|  8 | KN001 | Kue Nastar          | Tidak Ada   |
+|  9 | MT001 | Martabak            | Tidak Ada   |
+| 10 | BL001 | Bak Lava            | Tidak Ada   |
+| 11 | GD001 | Good Day            | Tidak Ada   |
+| 12 | TB001 | Teh Botol           | Tidak Ada   |
+| 13 | MK001 | Mechanical Keyboard | Tidak Ada   |
+| 14 | MN001 | Monitor             | Tidak Ada   |
+| 15 | MS001 | Mouse               | Tidak Ada   |
++----+-------+---------------------+-------------+
+15 rows in set (0.009 sec)
