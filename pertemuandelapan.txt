@@ -1,0 +1,80 @@
+membuat table bayangan dari table vedor
+- create view lihat_vendor as select nomor, nama, kota from vendor;
+
+membuat table bayangan dari tabb;e pesanan, pelanggan dan kartu
+MariaDB [dbpos3]> create view pesanan_pelanggan_kartu
+    -> as select pesanan.id, pesanan.tanggal, pesanan.total,
+    -> pelanggan.kode, pelanggan.nama,
+    -> kartu.nama as nama_kartu, kartu.diskon
+    -> from pesanan inner join pelanggan on pesanan.pelanggan_id = pelanggan.id
+    -> inner join kartu on pelanggan.kartu_id = kartu.id;
+
+Menambahkan data pada table secara permanen pada table kartu (jika commit di taro sebelum start transaction)
+MariaDB [dbpos3]> commit;
+
+MariaDB [dbpos3]> start transaction;
+
+MariaDB [dbpos3]> insert into kartu (kode, nama, diskon, iuran) values
+    -> ('PGU', 'Perunggu', 0.5, 2000);
+
+Penggunaan rollback
+
+MariaDB [dbpos3]> start transaction;
+
+MariaDB [dbpos3]> insert into kartu (kode, nama, diskon, iuran) values
+    -> ('PGU', 'Perunggu', 0.5, 2000);
+
+MariaDB [dbpos3]> rollback;
+
+MariaDB [dbpos3]> commit;
+
+MariaDB [dbpos3]> select * from kartu;
++----+------+---------------+--------+--------+
+| id | kode | nama          | diskon | iuran  |
++----+------+---------------+--------+--------+
+|  1 | GOLD | Gold Utama    |   0.05 | 100000 |
+|  2 | PLAT | Platinum Jaya |    0.1 | 150000 |
+|  3 | SLV  | Silver        |  0.025 |  50000 |
+|  4 | NO   | Non Member    |      0 |      0 |
+|  6 | PGU  | perunggu 1    |    0.5 |   2000 |
++----+------+---------------+--------+--------+
+5 rows in set (0.000 sec)
+
+Maka data yang di input pada insert to tidak terrekam pada table kartu karna ada perintah rollback.
+
+
+save point berguna untuk mengubah perintah dengan spesifik apa yang ingin di ubah (rollback)
+
+MariaDB [dbpos3]> select * from kartu;
++----+------+---------------+--------+--------+
+| id | kode | nama          | diskon | iuran  |
++----+------+---------------+--------+--------+
+|  1 | GOLD | Gold Utama    |   0.05 | 100000 |
+|  2 | PLAT | Platinum Jaya |    0.1 | 150000 |
+|  3 | SLV  | Silver        |  0.025 |  50000 |
+|  4 | NO   | Non Member    |      0 |      0 |
+|  6 | PGU  | perunggu 1    |    0.5 |   2000 |
++----+------+---------------+--------+--------+
+5 rows in set (0.001 sec)
+
+MariaDB [dbpos3]> savepoint update_kartu;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [dbpos3]> update kartu set diskon = 0.3 where id = 6;
+Query OK, 1 row affected (0.005 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [dbpos3]> select * from kartu;
++----+------+---------------+--------+--------+
+| id | kode | nama          | diskon | iuran  |
++----+------+---------------+--------+--------+
+|  1 | GOLD | Gold Utama    |   0.05 | 100000 |
+|  2 | PLAT | Platinum Jaya |    0.1 | 150000 |
+|  3 | SLV  | Silver        |  0.025 |  50000 |
+|  4 | NO   | Non Member    |      0 |      0 |
+|  6 | PGU  | perunggu 1    |    0.3 |   2000 |
++----+------+---------------+--------+--------+
+5 rows in set (0.000 sec)
+
+terjadi perubahan yaitu pada savepoint update_kartu ingin merubah diskon pada perunggu 1 menjadi 0.3.
+
