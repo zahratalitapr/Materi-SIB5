@@ -1,7 +1,7 @@
 membuat table bayangan dari table vedor
 - create view lihat_vendor as select nomor, nama, kota from vendor;
 
-membuat table bayangan dari tabb;e pesanan, pelanggan dan kartu
+membuat table bayangan dari tabble pesanan, pelanggan dan kartu
 MariaDB [dbpos3]> create view pesanan_pelanggan_kartu
     -> as select pesanan.id, pesanan.tanggal, pesanan.total,
     -> pelanggan.kode, pelanggan.nama,
