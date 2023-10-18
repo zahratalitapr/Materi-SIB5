@@ -1,0 +1,102 @@
+//membuat procedure tanpa parameter
+MariaDB [dbpos3]> DELIMITER $$
+MariaDB [dbpos3]> CREATE PROCEDURE showProduk()
+    -> BEGIN
+    -> SELECT kode,nama,stok FROM produk;
+    -> END $$
+Query OK, 0 rows affected (0.044 sec)
+
+MariaDB [dbpos3]> DELIMITER ;
+MariaDB [dbpos3]> CALL showProduk();
++------+------------------+------+
+| kode | nama             | stok |
++------+------------------+------+
+| TV01 | Televisi 21 inch |    5 |
+| TV02 | Televisi 40 inch |    4 |
+| K001 | Kulkas 2 pintu   |    6 |
+| M001 | Meja Makan       |    4 |
+| TK01 | Teh Kotak        |    6 |
+| PC01 | PC Desktop HP    |    9 |
+| TB01 | Teh Botol        |   53 |
+| AC01 | Notebook Acer    |    7 |
+| LN01 | Notebook Lenovo  |    9 |
+| L004 | Laptop HP        |   20 |
++------+------------------+------+
+10 rows in set (0.069 sec)
+
+Query OK, 0 rows affected (0.081 sec)
+
+//contoh procedure menggunakan paramaeter
+MariaDB [dbpos3]> DELIMITER $$
+MariaDB [dbpos3]> CREATE PROCEDURE showProdukElektronik(id int)
+    -> BEGIN
+    -> SELECT * FROM produk WHERE jenis_produk_id = id;
+    -> END $$
+Query OK, 0 rows affected (0.078 sec)
+
+MariaDB [dbpos3]> DELIMITER ;
+MariaDB [dbpos3]> CALL showProdukElektronik(1);
++----+------+------------------+------------+------------+------+----------+-----------------+
+| id | kode | nama             | harga_beli | harga_jual | stok | min_stok | jenis_produk_id |
++----+------+------------------+------------+------------+------+----------+-----------------+
+|  1 | TV01 | Televisi 21 inch |    3500000 |    5040000 |    5 |        2 |               1 |
+|  2 | TV02 | Televisi 40 inch |    5500000 |    7440000 |    4 |        2 |               1 |
+|  3 | K001 | Kulkas 2 pintu   |    3500000 |    4680000 |    6 |        2 |               1 |
++----+------+------------------+------------+------------+------+----------+-----------------+
+3 rows in set (0.049 sec)
+
+Query OK, 0 rows affected (0.064 sec)
+
+//contoh procedure dengan banyak paramaeter dan menambahkan data
+
+//dengan banyak parameter
+MariaDB [dbpos3]> DELIMITER $$
+MariaDB [dbpos3]> CREATE PROCEDURE inputPesanan(
+    -> tanggal date, total double, pelanggan_id int)
+    -> BEGIN
+    -> INSERT INTO pesanan (tanggal, total, pelanggan_id) VALUES
+    -> (tanggal, total, pelanggan_id);
+    -> END $$
+Query OK, 0 rows affected (0.009 sec)
+
+//menambahkan data
+MariaDB [dbpos3]> DELIMITER ;
+MariaDB [dbpos3]> CALL inputPesanan('2015-11-04',30000,9);
+Query OK, 1 row affected (0.017 sec)
+
+MariaDB [dbpos3]> SELECT * FROM pesanan;
++----+------------+---------+--------------+
+| id | tanggal    | total   | pelanggan_id |
++----+------------+---------+--------------+
+|  1 | 2015-11-04 | 9720000 |            1 |
+|  2 | 2015-11-04 |   17500 |            3 |
+|  3 | 2015-11-04 |       0 |            6 |
+|  4 | 2015-11-04 |       0 |            7 |
+|  5 | 2015-11-04 |       0 |           10 |
+|  6 | 2015-11-04 |       0 |            2 |
+|  7 | 2015-11-04 |       0 |            5 |
+|  8 | 2015-11-04 |       0 |            4 |
+|  9 | 2015-11-04 |       0 |            8 |
+| 10 | 2015-11-04 |       0 |            9 |
+| 11 | 2015-11-04 |   30000 |            9 |
++----+------------+---------+--------------+
+11 rows in set (1.530 sec)
+
+//procedur dengan return value
+MariaDB [dbpos3]> DELIMITER $$
+MariaDB [dbpos3]> CREATE PROCEDURE totalHarga(
+    -> in harga double, in jml int, out total double)
+    -> BEGIN
+    -> SET total = harga * jml;
+    -> select @total;
+    -> END $$
+Query OK, 0 rows affected (0.011 sec)
+MariaDB [dbpos3]> DELIMITER $$
+MariaDB [dbpos3]> CREATE PROCEDURE totalHarga(
+    -> in harga double, in jml int, out total double)
+    -> BEGIN
+    -> SET total = harga * jml;
+    -> select @total;
+    -> END $$
+Query OK, 0 rows affected (0.011 sec)
+
