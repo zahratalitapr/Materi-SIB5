@@ -1,6 +1,6 @@
 <?php
 $model = new Produk();
-$data_kartu = $model->dataProduk();
+$data_produk = $model->dataProduk();
 ?>
 
 <main>
@@ -51,7 +51,7 @@ $data_kartu = $model->dataProduk();
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        foreach ($dataProduk as $p){
+                                        foreach ($data_produk as $p){
 
                                         ?>
                                         <tr>
@@ -61,8 +61,8 @@ $data_kartu = $model->dataProduk();
                                             <td><?= $p['harga_beli'] ?></td>
                                             <td><?= $p['harga_jual'] ?></td>
                                             <td><?= $p['stok'] ?></td>
-                                            <td><?= $p['minimal_stok'] ?></td>
-                                            <td><?= $p['jenis_produk'] ?></td>
+                                            <td><?= $p['min_stok'] ?></td>
+                                            <td><?= $p['jenis'] ?></td>
                                         </tr>
                                         <?php
 
