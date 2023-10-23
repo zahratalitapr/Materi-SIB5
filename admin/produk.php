@@ -51,18 +51,18 @@ $data_kartu = $model->dataProduk();
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        foreach ($data_kartu as $kartu){
+                                        foreach ($dataProduk as $p){
 
                                         ?>
                                         <tr>
                                             <td><?= $no++ ?></td>
-                                            <td><?= $kartu['kode'] ?></td>
-                                            <td><?= $kartu['nama'] ?></td>
-                                            <td><?= $kartu['harga_beli'] ?></td>
-                                            <td><?= $kartu['harga_jual'] ?></td>
-                                            <td><?= $kartu['stok'] ?></td>
-                                            <td><?= $kartu['minimal_stok'] ?></td>
-                                            <td><?= $kartu['jenis_produk'] ?></td>
+                                            <td><?= $p['kode'] ?></td>
+                                            <td><?= $p['nama'] ?></td>
+                                            <td><?= $p['harga_beli'] ?></td>
+                                            <td><?= $p['harga_jual'] ?></td>
+                                            <td><?= $p['stok'] ?></td>
+                                            <td><?= $p['minimal_stok'] ?></td>
+                                            <td><?= $p['jenis_produk'] ?></td>
                                         </tr>
                                         <?php
 
