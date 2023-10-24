@@ -34,6 +34,7 @@ $data_produk = $model->dataProduk();
                                             <th>Stok</th>
                                             <th>Minimal Stok</th>
                                             <th>Jenis Produk</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -46,6 +47,7 @@ $data_produk = $model->dataProduk();
                                             <th>Stok</th>
                                             <th>Minimal Stok</th>
                                             <th>Jenis Produk</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -63,6 +65,13 @@ $data_produk = $model->dataProduk();
                                             <td><?= $p['stok'] ?></td>
                                             <td><?= $p['min_stok'] ?></td>
                                             <td><?= $p['jenis'] ?></td>
+                                            <td>
+                                                <form>
+                                                    <a href="index.php?url=produk_detail&id=<?= $p['id'] ?>">
+                                                        <button type="button" class="btn btn-info btn-sm">Details</button>
+                                                    </a>
+                                                </form>
+                                            </td>
                                         </tr>
                                         <?php
 
