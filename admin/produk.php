@@ -20,7 +20,9 @@ $data_produk = $model->dataProduk();
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                <a href="index.php?url=produk_form">
+                                    <button class="btn btn-sm btn-primary">Tambah</button>
+                                </a>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -66,10 +68,23 @@ $data_produk = $model->dataProduk();
                                             <td><?= $p['min_stok'] ?></td>
                                             <td><?= $p['jenis'] ?></td>
                                             <td>
-                                                <form>
+                                                <form action="produk_controller.php" method="POST">
+                                                    <!-- menambagkan button details -->
                                                     <a href="index.php?url=produk_detail&id=<?= $p['id'] ?>">
                                                         <button type="button" class="btn btn-info btn-sm">Details</button>
                                                     </a>
+
+                                                    <!-- menambahkan tombol ubah-->
+                                                    <a href="index.php?url=produk_form&idedit=<?= $produk['id'] ?>">
+                                                        <button type="button" class="btn btn-warning btn-sm">Ubah</button>
+                                                    </a>
+
+                                                    <!-- menambahkan tombol hapus -->
+                                                    <button type="submit" class="btn btn-danger btn-sm" name="proses" value="hapus"
+                                                    onclick="return confirm('Anda yakin menghapus?')">
+                                                        Hapus
+                                                    </button>
+                                                    <input type="hidden" name="idx" value="<?= $produk['id'] ?>">
                                                 </form>
                                             </td>
                                         </tr>
