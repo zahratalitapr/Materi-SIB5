@@ -75,7 +75,7 @@ $data_produk = $model->dataProduk();
                                                     </a>
 
                                                     <!-- menambahkan tombol ubah-->
-                                                    <a href="index.php?url=produk_form&idedit=<?= $produk['id'] ?>">
+                                                    <a href="index.php?url=produk_form&idedit=<?= $p['id'] ?>">
                                                         <button type="button" class="btn btn-warning btn-sm">Ubah</button>
                                                     </a>
 
@@ -84,7 +84,7 @@ $data_produk = $model->dataProduk();
                                                     onclick="return confirm('Anda yakin menghapus?')">
                                                         Hapus
                                                     </button>
-                                                    <input type="hidden" name="idx" value="<?= $produk['id'] ?>">
+                                                    <input type="hidden" name="idx" value="<?= $p['id'] ?>">
                                                 </form>
                                             </td>
                                         </tr>
