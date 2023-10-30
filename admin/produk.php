@@ -3,7 +3,7 @@ $model = new Produk();
 $data_produk = $model->dataProduk();
 
 // $member = $_SESSION['MEMBER'];
-// if(!isset($member)){
+// if(isset($member)){
 
 
 ?>
@@ -79,6 +79,12 @@ $data_produk = $model->dataProduk();
                                                         <button type="button" class="btn btn-info btn-sm">Details</button>
                                                     </a>
 
+                                                    <!-- logic login user -->
+                                                    <?php
+                                                    if($sesi['role'] != 'staff'){
+                                                        ?>
+                                                    
+
                                                     <!-- menambahkan tombol ubah-->
                                                     <a href="index.php?url=produk_form&idedit=<?= $p['id'] ?>">
                                                         <button type="button" class="btn btn-warning btn-sm">Ubah</button>
@@ -90,6 +96,8 @@ $data_produk = $model->dataProduk();
                                                         Hapus
                                                     </button>
                                                     <input type="hidden" name="idx" value="<?= $p['id'] ?>">
+                                                    <?php } 
+                                                    ?>
                                                 </form>
                                             </td>
                                         </tr>
@@ -104,8 +112,8 @@ $data_produk = $model->dataProduk();
                         </div>
                     </div>
                 </main>
-                <!-- <?php //}
+                <?php 
                 // else {
-                    // echo'<script> alert("anda tidak boleh masuk");history.back();</script>';
+                //     echo'<script> alert("anda tidak boleh masuk");history.back();</script>';
                 // }
-                ?> -->
+                ?>
