@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    //fungsi index
+    //fungsi index 
     public function index(){
         return view('admin.dashboard'); //mengarahkan ke file dashboard yang ada didalam admin
     }

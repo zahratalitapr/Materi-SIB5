@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\http\Controllers\lihatNilaiController;
-use App\http\Controllers\DashboardController;
-use App\http\Controllers\PagenotController;
+use App\Http\Controllers\LihatNilaiController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PagenotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,30 +19,26 @@ use App\http\Controllers\PagenotController;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/salam', function(){
-    return "Assalamualaikum Selamat belajar Laravel";
+    return "Assalamualaikum selamat belajar Laravel";
 });
-
-// tambah routing dengan parameter
+//tambah routing dengan parameter
 Route::get('/staff/{nama}/{divisi}', function($nama, $divisi){
     return 'Nama Pegawai : '.$nama. '<br> Departemen : '.$divisi;
 });
-
-// routing dengan memanggil nama file dari view
+//routing dengan memanggil nama file dari view
 Route::get('/kondisi', function(){
     return view('kondisi');
 });
 Route::get('/nilai', function(){
     return view('coba.nilai');
 });
-
-// route dengan routing dan array
+//routing dengan view dan array data
 Route::get('/daftarnilai', function(){
     return view('coba.daftar');
 });
-
-Route::get('/datamahasiswa',[lihatNilaiController::class, 'dataMahasiswa']);
+//routing manggil dari class controller
+Route::get('/datamahasiswa', [LihatNilaiController::class, 'dataMahasiswa']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/notfound', [PageController::class, 'index']);
+Route::get('/notfound', [PagenotController::class, 'index']);
