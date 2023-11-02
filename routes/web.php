@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\lihatNilaiController;
+use App\http\Controllers\DashboardController;
+use App\http\Controllers\PagenotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +43,6 @@ Route::get('/daftarnilai', function(){
 });
 
 Route::get('/datamahasiswa',[lihatNilaiController::class, 'dataMahasiswa']);
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/notfound', [PageController::class, 'index']);
