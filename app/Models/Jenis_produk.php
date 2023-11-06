@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Jenis_produk extends Model
+{
+    use HasFactory;
+
+    // mapping table
+    protected $table = 'jenis_produk';
+
+    // maping kolom atau field
+    protected $fillable = ['nama'];
+
+    // relasi antara table 
+    public function produk(){
+        return $this->hasMany(Produk::class); 
+        //has many untuk relasi one to many
+    }
+}
