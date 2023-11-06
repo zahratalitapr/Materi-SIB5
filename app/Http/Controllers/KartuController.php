@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kartu;
 //syarat query builder harus menggunakan 
-use DB;
+// use DB;
+use Illuminate\Support\Facades\DB;
 // klo tampilannya merah, tambahin
-// use Illuminate\Support\Facades\DB
 
 class KartuController extends Controller
 {
