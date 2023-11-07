@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Pelanggan extends Model
 {
     use HasFactory;
@@ -14,6 +15,6 @@ class Pelanggan extends Model
     ];
 
     public function kartu(){
-        return $this->hasOne(Kartu::class);
+        return $this->belongsTo(Kartu::class);
     }
 }
