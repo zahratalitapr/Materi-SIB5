@@ -60,7 +60,7 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/produk', [ProdukController::class, 'index']);
     Route::get('/produk/create', [ProdukController::class, 'create']);
-    Route::get('/produk/store', [ProdukController::class, 'store']);
+    Route::post('/produk/store', [ProdukController::class, 'store']);
 
     Route::resource('pelanggan', PelangganController::class);
 });

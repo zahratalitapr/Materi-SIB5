@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<form method="POST" action="{{route('produk.store')}}" enctype="multipart/form-data">
+<form method="POST" action="{{url('admin/produk/store')}}" enctype="multipart/form-data">
   @csrf
   <div class="form-group row">
     <label for="text" class="col-4 col-form-label">Kode</label> 
@@ -17,6 +17,7 @@
       <input id="text1" name="nama" type="nama" class="form-control">
     </div>
   </div>
+
   <div class="form-group row">
     <label for="text2" class="col-4 col-form-label">Harga Beli</label> 
     <div class="col-8">
@@ -26,21 +27,27 @@
   <div class="form-group row">
     <label for="text3" class="col-4 col-form-label">Harga Jual</label> 
     <div class="col-8">
-      <input id="text3" name="harga_jual" type="date" class="form-control">
+      <input id="text3" name="harga_jual" type="text" class="form-control">
     </div>
   </div>
   <div class="form-group row">
-    <label for="text4" class="col-4 col-form-label">Email</label> 
+    <label for="text4" class="col-4 col-form-label">Stok</label> 
     <div class="col-8">
-      <input id="text4" name="email" type="text" class="form-control">
+      <input id="text4" name="stok" type="text" class="form-control">
     </div>
   </div>
   <div class="form-group row">
-    <label for="select" class="col-4 col-form-label">Kartu</label> 
+    <label for="text4" class="col-4 col-form-label">Minimal Stok</label> 
     <div class="col-8">
-      <select id="select" name="kartu" class="custom-select">
-        @foreach ($kartu as $k)
-        <option value="{{$k->id}}">{{$k->nama}}</option>
+      <input id="text4" name="min_stok" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="select" class="col-4 col-form-label">Jenis Produk</label> 
+    <div class="col-8">
+      <select id="select" name="jenis_produk_id" class="custom-select">
+        @foreach ($jenis_produk as $p)
+        <option value="{{$p->id}}">{{$p->nama}}</option>
         @endforeach
       </select>
     </div>

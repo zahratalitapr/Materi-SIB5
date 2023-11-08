@@ -26,7 +26,7 @@ class PelangganController extends Controller
         //
         $kartu = Kartu::all();
         $gender = ['L','P'];
-        return view ('admin.pelanggan.create', compact('kartu', 'gender'));
+        return view('admin.pelanggan.create', compact('kartu', 'gender'));
     }
 
     /**
@@ -35,7 +35,7 @@ class PelangganController extends Controller
     public function store(Request $request)
     {
         //
-        $pelanggan = new Pelanggan ;
+        $pelanggan = new Pelanggan;
         $pelanggan->kode = $request->kode;
         $pelanggan->nama = $request->nama;
         $pelanggan->jk = $request->jk;

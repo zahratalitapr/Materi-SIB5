@@ -57,7 +57,7 @@
   <div class="form-group row">
     <label for="select" class="col-4 col-form-label">Kartu</label> 
     <div class="col-8">
-      <select id="select" name="kartu" class="custom-select">
+      <select id="select" name="kartu_id" class="custom-select">
         @foreach ($kartu as $k)
         <option value="{{$k->id}}">{{$k->nama}}</option>
         @endforeach

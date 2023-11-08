@@ -44,7 +44,7 @@ class ProdukController extends Controller
             'harga_jual'=>$request->harga_jual,
             'stok'=>$request->stok,
             'min_stok'=>$request->min_stok,
-            'jenis_produk_id'=>request->jenis_produk_id,
+            'jenis_produk_id'=>$request->jenis_produk_id,
         ]);
         return redirect('admin/produk');
     }
