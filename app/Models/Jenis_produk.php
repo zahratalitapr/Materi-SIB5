@@ -14,6 +14,7 @@ class Jenis_produk extends Model
 
     // maping kolom atau field
     protected $fillable = ['nama'];
+    public $timestamps = false;
 
     // relasi antara table 
     public function produk(){
