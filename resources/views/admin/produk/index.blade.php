@@ -1,8 +1,7 @@
 @extends('admin.layout.appadmin')
 @section('content')
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+<h1 class="h3 mb-2 text-gray-800">Tables</h1>
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>
@@ -10,14 +9,15 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                        <a href="{{url('admin/produk/store')}}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                        <a href="{{url('admin/produk/create')}}" class="btn btn-primary" ><i class="fas fa-plus"></i></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
+                                        
                                         <tr>
-                                            <th>no</th>
+                                        <th>No</th>
                                             <th>Kode</th>
                                             <th>Nama</th>
                                             <th>Harga Beli</th>
@@ -26,11 +26,12 @@
                                             <th>Minimal Stok</th>
                                             <th>Jenis Produk</th>
                                             <th>Action</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>no</th>
+                                        <th>No</th>
                                             <th>Kode</th>
                                             <th>Nama</th>
                                             <th>Harga Beli</th>
@@ -44,6 +45,7 @@
                                     <tbody>
                                     @php $no=1 @endphp
                                     @foreach ($produk as $pr)
+                                    
                                         <tr>
                                             <td>{{$no++}}</td>
                                             <td>{{$pr->kode}}</td>
@@ -54,10 +56,10 @@
                                             <td>{{$pr->min_stok}}</td>
                                             <td>{{$pr->jenis}}</td>
                                             <td>
-                                                <a href="{{url('admin/produk/show/'.$pr->id)}}" class="btn btn-sm btn-info"><i class= "fas fa-eye"></i></a>
-                                                <a href="{{url('admin/produk/edit/'.$pr->id)}}" class="btn btn-sm btn-warning"><i class= "fas fa-edit"></i></a>
-                                                <!-- <a href="{{url('admin/produk/edit/'.$pr->id)}}" class="btn btn-sm btn-warning">Delete<i class= "fas fa-trash"></i></a> -->
+                                                <a href="{{url('admin/produk/show/'.$pr->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                                <a href="{{url('admin/produk/edit/'.$pr->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                                 
+                                                <!-- Button trigger modal -->
 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal{{$pr->id}}">
 <i class="fas fa-trash"></i>
 </button>
@@ -73,7 +75,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin akan menghapus data {{$pr->nama}}
+        Apakah anda yakin akan menghapus data {{$pr->nama}} ?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -83,17 +85,17 @@
   </div>
 </div>
                                             </td>
+                                           
                                         </tr>
-                                    @endforeach
+                                        
+                                        @endforeach
+                                       
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
 
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
+                
 
 @endsection

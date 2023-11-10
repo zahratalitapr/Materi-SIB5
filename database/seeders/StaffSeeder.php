@@ -4,10 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-// use Illuminate\Support\Facades\DB;
 use DB;
 use Illuminate\Support\Arr;
-
 class StaffSeeder extends Seeder
 {
     /**
@@ -15,11 +13,12 @@ class StaffSeeder extends Seeder
      */
     public function run(): void
     {
+        //
         for ($i=0; $i<=10; $i++){
             DB::table('staff')->insert([
                 'nip'=>rand(),
-                'nama'=>uniqid('nama_'),
-                'gender'=>Arr::random(['L','P']),
+                'name'=>uniqid('name_'),
+                'gender'=>Arr::random(['L', 'P']),
                 'alamat'=>uniqid('alamat_'),
                 'email'=>uniqid().'@gmail.com',
                 'foto'=>uniqid('foto_'),

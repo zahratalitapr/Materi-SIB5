@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kartu;
-//syarat query builder harus menggunakan 
+//use DB digunakan sebagai syarat ketika membuat sintaks query builder
 // use DB;
 use Illuminate\Support\Facades\DB;
-// klo tampilannya merah, tambahin
-
 class KartuController extends Controller
 {
     /**
@@ -19,6 +17,7 @@ class KartuController extends Controller
         // sintaks menggunakan query builder
         $kartu = DB::table('kartu')->get();
         return view ('admin.kartu.index', compact('kartu'));
+
     }
 
     /**

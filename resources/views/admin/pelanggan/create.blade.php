@@ -4,36 +4,30 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <form method="POST" action="{{route('pelanggan.store')}}" enctype="multipart/form-data">
-  @csrf
+    @csrf
   <div class="form-group row">
     <label for="text" class="col-4 col-form-label">Kode</label> 
     <div class="col-8">
-      <input id="text" name="kode" type="kode" class="form-control">
+      <input id="text" name="kode" type="text" class="form-control">
     </div>
   </div>
   <div class="form-group row">
     <label for="text1" class="col-4 col-form-label">Nama</label> 
     <div class="col-8">
-      <input id="text1" name="nama" type="nama" class="form-control">
+      <input id="text1" name="nama" type="text" class="form-control">
     </div>
   </div>
   <div class="form-group row">
     <label class="col-4">Jenis Kelamin</label> 
     <div class="col-8">
-        <!-- @foreach ($gender as $g )
+        @foreach($gender as $g)
         @php
-        $cek = (old('g') == $g) ? 'checked' : ''; @endphp
-      <div class="custom-control custom-radio custom-control-inline">
-        <input name="jk" id="radio_0" type="radio" class="custom-control-input" value="{{$g}}" {{$cek}}> 
-        <label for="radio_0" class="custom-control-label">{{$g}}</label>
+        $cek = (old('g') == $g) ? 'checked':''; @endphp
+      <div class="form-check">
+        <input name="jk" id="radio_0" type="radio" class="form-check-input" value="{{$g}}" {{$cek}}> 
+        <label for="radio_0" class="form-check-label">{{$g}}</label>
       </div>
-        @endforeach -->
-        @foreach ($gender as $g)
-            <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" name="jk" id="radio_{{ $loop->iteration }}" class="custom-control-input" value="{{ $g }}" />
-              <label for="radio_{{ $loop->iteration }}" class="custom-control-label">{{ $g }}</label>
-            </div>
-          @endforeach
+      @endforeach
     </div>
   </div>
   <div class="form-group row">

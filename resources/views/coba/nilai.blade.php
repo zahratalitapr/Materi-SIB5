@@ -1,4 +1,4 @@
-@php
+@php 
 $nama = "Budi";
 $nilai = 59.99;
 @endphp

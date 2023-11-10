@@ -8,17 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Jenis_produk extends Model
 {
     use HasFactory;
-
-    // mapping table
+    //mapping table 
     protected $table = 'jenis_produk';
-
-    // maping kolom atau field
+    //mapping kolom atau field
     protected $fillable = ['nama'];
     public $timestamps = false;
+    //relasi antara table
 
-    // relasi antara table 
     public function produk(){
-        return $this->hasMany(Produk::class); 
-        //has many untuk relasi one to many
+        return $this->hasMany(Produk::class);
     }
+
 }

@@ -11,11 +11,12 @@ class Kartu extends Model
 
     protected $table = 'kartu';
 
-    protected $fillabel = [
-        'kode', 'nama', 'diskon', 'iuran'
+    protected $fillable = [
+        'kode', 'nama', 'diskon','iuran'
     ];
 
     public function pelanggan(){
-        return sthis->hasMany(Pelanggan::class);
+        return $this->hasMany(Pelanggan::class);
     }
+
 }

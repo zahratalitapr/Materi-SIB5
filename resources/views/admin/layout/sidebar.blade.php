@@ -72,6 +72,7 @@
                         <a class="collapse-item" href="{{route('pelanggan.index')}}">Data Pelanggan</a>
                         <a class="collapse-item" href="/admin/jenis_produk">Data Jenis Produk</a>
                         <a class="collapse-item" href="{{route('kartu.index')}}">Data Kartu</a>
+
                     </div>
                 </div>
             </li>

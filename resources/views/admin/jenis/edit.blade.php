@@ -3,8 +3,8 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<form method="POST" action="{{url('admin/jenis_produk/store')}}" enctype="multipart/form-data">
+@foreach ($jenis_produk as $jenis)
+<form method="POST" action="{{url('admin/jenis_produk/update/'.$jenis->id)}}" enctype="multipart/form-data">
     @csrf
     
   <div class="form-group row">
@@ -16,7 +16,7 @@
             <i class="fa fa-address-card"></i>
           </div>
         </div> 
-        <input id="text" name="nama" type="text" class="form-control" placeholder="Isi jenis produk">
+        <input id="text" name="nama" type="text" class="form-control" value="{{$jenis->nama}}">
       </div>
     </div>
   </div> 
@@ -26,4 +26,5 @@
     </div>
   </div>
 </form>
+@endforeach
 @endsection

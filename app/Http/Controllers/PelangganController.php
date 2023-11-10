@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pelanggan;
 use App\Models\Kartu;
 
+
 class PelangganController extends Controller
 {
     /**
@@ -13,9 +14,10 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        //eloquent 
         $pelanggan = Pelanggan::all();
         return view('admin.pelanggan.index',['pelanggan' => $pelanggan]);
+
     }
 
     /**
@@ -26,7 +28,8 @@ class PelangganController extends Controller
         //
         $kartu = Kartu::all();
         $gender = ['L','P'];
-        return view('admin.pelanggan.create', compact('kartu', 'gender'));
+        return view ('admin.pelanggan.create', compact('kartu', 'gender'));
+
     }
 
     /**
@@ -34,7 +37,7 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //tambah data eloquent
         $pelanggan = new Pelanggan;
         $pelanggan->kode = $request->kode;
         $pelanggan->nama = $request->nama;
@@ -52,7 +55,9 @@ class PelangganController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //show eloquent
+        $pelanggan = Pelanggan::find($id);
+        return view ('admin.pelanggan.show', compact('pelanggan'));
     }
 
     /**
@@ -60,7 +65,11 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //edit eloquent
+        $pelanggan = Pelanggan::find($id);
+        $kartu = Kartu::all();
+        $gender = ['L','P'];
+        return view ('admin.pelanggan.edit', compact('pelanggan', 'kartu','gender'));
     }
 
     /**
@@ -76,6 +85,10 @@ class PelangganController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // delete eloquent
+        $pelanggan = Pelanggan::find($id);
+        $pelanggan->delete();
+        return redirect('admin/pelanggan');
+
     }
 }

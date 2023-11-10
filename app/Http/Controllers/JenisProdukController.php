@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-// membuat koneksi antar model jenis_produk dengan controller jenis_produk
-use App\Models\Jenis_Produk;
+//pemanggilan models didalam controller 
+use App\Models\Jenis_produk;
 
 class JenisProdukController extends Controller
 {
@@ -14,7 +13,7 @@ class JenisProdukController extends Controller
      */
     public function index()
     {
-        //sintaks menggunakan eloquent(ORM)
+        // sintaks menggunakan eloquent (ORM)
         $jenis_produk = Jenis_produk::all();
         return view ('admin.jenis.index', compact('jenis_produk'));
     }
@@ -33,8 +32,8 @@ class JenisProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $jenis_produk =  new Jenis_Produk;
+        //tambah data eloquent
+        $jenis_produk = new Jenis_produk;
         $jenis_produk->nama = $request->nama;
         $jenis_produk->save();
         return redirect('admin/jenis_produk');
@@ -54,6 +53,8 @@ class JenisProdukController extends Controller
     public function edit(string $id)
     {
         //
+        $jenis_produk = Jenis_produk::all()->where('id', $id);
+        return view ('admin.jenis.edit', compact('jenis_produk'));
     }
 
     /**
@@ -62,6 +63,10 @@ class JenisProdukController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $jenis_produk = Jenis_produk::find($request->id);
+        $jenis_produk->nama = $request->nama;
+        $jenis_produk->save();
+        return redirect('admin/jenis_produk');
     }
 
     /**

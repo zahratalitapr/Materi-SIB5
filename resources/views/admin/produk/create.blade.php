@@ -4,20 +4,20 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <form method="POST" action="{{url('admin/produk/store')}}" enctype="multipart/form-data">
-  @csrf
+    @csrf
   <div class="form-group row">
     <label for="text" class="col-4 col-form-label">Kode</label> 
     <div class="col-8">
-      <input id="text" name="kode" type="kode" class="form-control">
+      <input id="text" name="kode" type="text" class="form-control">
     </div>
   </div>
   <div class="form-group row">
     <label for="text1" class="col-4 col-form-label">Nama</label> 
     <div class="col-8">
-      <input id="text1" name="nama" type="nama" class="form-control">
+      <input id="text1" name="nama" type="text" class="form-control">
     </div>
   </div>
-
+  
   <div class="form-group row">
     <label for="text2" class="col-4 col-form-label">Harga Beli</label> 
     <div class="col-8">
@@ -42,6 +42,18 @@
       <input id="text4" name="min_stok" type="text" class="form-control">
     </div>
   </div>
+  <div class="form-group row">
+    <label for="text4" class="col-4 col-form-label">Foto</label> 
+    <div class="col-8">
+      <input id="text4" name="foto" type="file" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="textarea" class="col-4 col-form-label">Deskripsi</label> 
+    <div class="col-8">
+      <textarea id="textarea" name="deskripsi" cols="40" rows="5" class="form-control"></textarea>
+    </div>
+</div>
   <div class="form-group row">
     <label for="select" class="col-4 col-form-label">Jenis Produk</label> 
     <div class="col-8">

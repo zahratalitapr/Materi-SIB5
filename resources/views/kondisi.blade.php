@@ -1,6 +1,7 @@
 <?php
 
 $nama = "Bedu";
-echo 'Hai Apa Kabar '.$nama.' ?';
+echo 'Hai Apa kabar'.$nama.'?';
+
 
 ?>
