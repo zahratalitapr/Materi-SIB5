@@ -25,6 +25,7 @@
                                             <th>Tanggal Lahir</th>
                                             <th>Email</th>
                                             <th>Kartu</th>
+                                            <th>Aksi</th>
                                             
                                         </tr>
                                     </thead>
@@ -38,6 +39,7 @@
                                             <th>Tanggal Lahir</th>
                                             <th>Email</th>
                                             <th>Kartu</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -53,6 +55,11 @@
                                             <td>{{$pl->tgl_lahir}}</td>
                                             <td>{{$pl->email}}</td>
                                             <td>{{$pl->kartu->nama}}</td>
+                                            <td>
+                                                <a href="{{route('pelanggan.edit', $pl->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="{{ route('pelanggan.destroy', $pl->id) }}" class="btn btn-sm btn-danger" data-confirm-delete="true">Delete</a>
+
+                                            </td>
                                            
                                         </tr>
                                         
