@@ -7,7 +7,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
 
-class ProdukExport implements FromCollection
+class ProdukExport implements FromCollection, WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
