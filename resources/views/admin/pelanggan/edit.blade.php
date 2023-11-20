@@ -53,6 +53,8 @@
     <div class="col-8">
       <select id="select" name="kartu_id" class="custom-select">
         @foreach ($kartu as $k)
+        @php
+        $cek = ($g == $pl->jk) ? 'checked':''; @endphp
         <option value="{{$k->id}}">{{$k->nama}}</option>
         @endforeach
       </select>
