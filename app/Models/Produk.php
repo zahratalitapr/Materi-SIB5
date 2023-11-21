@@ -13,6 +13,8 @@ class Produk extends Model
         'kode','nama','harga_beli','harga_jual','stok','min_stok','jenis_produk_id'
     ];
     public $timestamps = false;
+
+
     //relasi one to many ke table yang berhubungan dengan produk
     public function jenis_produk(){
         return $this->belongsTo(Jenis_produk::class);
