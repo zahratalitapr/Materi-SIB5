@@ -117,7 +117,7 @@
   <div class="form-group row">
     <label for="select" class="col-4 col-form-label">Jenis Produk</label> 
     <div class="col-8">
-      <select id="select" name="jenis_produk_id" class="custom-select @error('kode') is-invalid @enderror">
+      <select id="select" name="jenis_produk_id" class="custom-select @error('idarmada') is-invalid @enderror">
         @foreach ($jenis_produk as $p)
         <option value="{{$p->id}}">{{$p->nama}}</option>
         @endforeach
