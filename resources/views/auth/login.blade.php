@@ -5,7 +5,7 @@
 <div class="container">
 
 <!-- Outer Row -->
-<div class="row justify-content-center">
+    <div class="row justify-content-center">
 
     <div class="col-xl-10 col-lg-12 col-md-9">
 
@@ -96,7 +96,7 @@
                                 <a class="small" href="{{('/')}}">Kembali ke halaman depan</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="{{ route('register') }}">Create an Account!</a>
+                                <a class="small" href="{{route('register') }}">Create an Account!</a>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
 
     </div>
 
-</div>
+    </div>
 
 </div>
 
