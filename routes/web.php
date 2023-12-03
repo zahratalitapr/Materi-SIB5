@@ -10,6 +10,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,14 @@ use App\Http\Controllers\UserController;
 //     return view('welcome');
 // });
 Route::get('/', [BerandaController::class, 'index']);
+Route::get('/shop', [ShopController::class, 'index']);
+
+// route cart
+Route::get('/cart', [ShopController::class, 'cart'])->name('cart');
+Route::get('add-to-cart/{id}', [ShopController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('update-cart', [ShopController::class, 'update'])->name('update.cart');
+Route::delete('remove-from-cart', [ShopController::class, 'remove'])->name('remove.from.cart');
+
 Route::get('/salam', function(){
     return "Assalamualaikum selamat belajar Laravel";
 });

@@ -21,6 +21,14 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="{{asset('front/css/tiny-slider.css')}}" rel="stylesheet">
 		<link href="{{asset('front/css/style.css')}}" rel="stylesheet">
+		<!-- cart -->
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<link href="{{asset('front/css/style1.css')}}" rel="stylesheet">
+
 		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
 	</head>
 
@@ -39,9 +47,11 @@
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 						<li class="nav-item active">
-							<a class="nav-link" href="index.html">Home</a>
+							<a class="nav-link" href="{{url('/')}}">Home</a>
 						</li>
-						<li><a class="nav-link" href="shop.html">Shop</a></li>
+						@auth 
+						<li><a class="nav-link" href="{{url('/shop')}}">Shop</a></li>
+						@endauth
 						<li><a class="nav-link" href="about.html">About us</a></li>
 						<li><a class="nav-link" href="services.html">Services</a></li>
 						<li><a class="nav-link" href="blog.html">Blog</a></li>
@@ -50,15 +60,87 @@
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						<li><a class="nav-link" href="{{route('login')}}"><img src="{{asset('front/images/user.svg')}}"></a></li>
-						<li><a class="nav-link" href="cart.html"><img src="{{asset('front/images/cart.svg')}}"></a></li>
+						@auth
+						<!-- logout -->
+						<li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+							<!-- logout end -->
+						<!-- <li><a class="nav-link" href="cart.html"><img src="{{asset('front/images/cart.svg')}}"></a></li> -->
+
+						<!-- cart start -->
+						<div class="dropdown">
+							<button type="button" class="btn btn-info" data-toggle="dropdown">
+								<i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+						</button>
+						<div class="dropdown-menu">
+							<div class="row total-header-section">
+								<div class="col-lg-6 col-sm-6 col-6">
+									<i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                        		</div>
+								@php $total = 0 @endphp
+                        		@foreach((array) session('cart') as $id => $details)
+                            		@php $total += $details['harga_jual'] * $details['quantity'] @endphp
+                        		@endforeach
+								<div class="col-lg-6 col-sm-6 col-6 total-section text-right">
+                            		<p>Total: <span class="text-info">Rp. {{ $total }}</span></p>
+                        		</div>
+                    		</div>
+							@if(session('cart'))
+							@foreach(session('cart') as $id => $details)
+							<div class="row cart-detail">
+                                <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
+									@empty($details['foto'])
+                                    <img src="{{ url('admin/img/nophoto.jpg') }}" />
+									@else
+									<img src="{{ url('admin/img') }}/{{$details['foto']}}" />
+									@endempty
+                                </div>
+                                <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
+                                    <p>{{ $details['nama'] }}</p>
+                                    <span class="price text-info"> Rp. {{ $details['harga_jual'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                                </div>
+                            </div>
+                        	@endforeach
+                    		@endif
+							<div class="row">
+                     			<div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                            		<a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
+                        		</div>
+                    		</div>
+                		</div>
+					</div>
+			<!-- cart end -->
+
 					</ul>
 				</div>
 			</div>
+			@endauth
 				
 		</nav>
+		@if(session('success'))
+			<div class="alert alert-success">
+			{{ session('success') }}
+			</div> 
+    	@endif
 		<!-- End Header/Navigation -->
 
         @yield('front')
+        @yield('scripts')
 
         <!-- Start Footer Section -->
 		<footer class="footer-section">
