@@ -19,3 +19,7 @@ use App\Http\Controllers\Api\ProdukController;
 //     return $request->user();
 // });
 Route::get('/produk', [ProdukController::class, 'index']);
+Route::get('/produk/{id}', [ProdukController::class, 'show']);
+Route::post('/produk-create', [ProdukController::class, 'store']);
+Route::put('/produk/{id}', [ProdukController::class, 'update']);
+Route::delete('/produk/{id}', [ProdukController::class, 'destroy']);
