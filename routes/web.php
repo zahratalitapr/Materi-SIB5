@@ -29,6 +29,11 @@ use App\Http\Controllers\ShopController;
 Route::get('/', [BerandaController::class, 'index']);
 Route::get('/shop', [ShopController::class, 'index']);
 
+// route sementara
+Route::get('/produkapi', [ProdukController::class, 'apiProduk' ]);
+Route::get('/produkapi/{id}', [ProdukController::class, 'apiProdukDetail']);
+
+
 // route cart
 Route::get('/cart', [ShopController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [ShopController::class, 'addToCart'])->name('add.to.cart');

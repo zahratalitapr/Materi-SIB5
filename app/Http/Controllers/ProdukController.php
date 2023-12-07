@@ -233,4 +233,31 @@ class ProdukController extends Controller
         Excel::import(new ProdukImport, $request->file('file')->store('temp'));
         return redirect('admin/produk')->with('success', 'Berhasil mengimpor data');
     }
+
+    public function apiProduk(){
+        $produk = Produk::all();
+        return response()->json([
+            'success'=>true,
+            'message' => 'Data Produk',
+            'data' => $produk
+        ], 200
+    );
+    }
+
+    public function apiProdukDetail($id){
+        $produk = Produk::find($id);
+        if ($produk){
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Produk',
+                'data' => $produk
+            ], 200);
+        }
+        else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Detail Produk Tidak Ditemukan'
+            ], 404);
+        }
+    }
 }
