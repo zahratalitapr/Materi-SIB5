@@ -1,5 +1,25 @@
 @extends('front.app')
+
 @section('front')
+<!-- midtrans -->
+<script type="text/javascript"
+      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="{{config('midtrans.client_key')}}"></script>	
+<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+								<h1>Cart</h1>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
 <table id="cart" class="table table-hover table-condensed">
     <thead>
         <tr>
@@ -21,19 +41,20 @@
                             <div class="col-sm-3 hidden-xs">
                                     @empty($details['foto'])
                                     <img src="{{ url('admin/img/nophoto.jpg') }}" width="100" height="100" class="img-responsive"/>
-									@else
-                                    <img src="{{ url('admin/img') }}/{{$details['foto']}}" width="100" height="100" class="img-responsive"/></div>
-									@endempty
+									@else 
+                                <img src="{{ url('admin/img') }}/{{$details['foto']}}" width="100" height="100" class="img-responsive"/>
+                                @endempty
+                            </div>
                             <div class="col-sm-9">
                                 <h4 class="nomargin">{{ $details['nama'] }}</h4>
                             </div>
                         </div>
                     </td>
-                    <td data-th="Price">Rp. {{ number_format($details['harga_jual'],0,',','.')}}</td>
+                    <td data-th="Price">${{ $details['harga_jual'] }}</td>
                     <td data-th="Quantity">
                         <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
                     </td>
-                    <td data-th="Subtotal" class="text-center">Rp.{{ $details['harga_jual'] * $details['quantity'] }}</td>
+                    <td data-th="Subtotal" class="text-center">${{ $details['harga_jual'] * $details['quantity'] }}</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
                     </td>
@@ -43,16 +64,41 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5" class="text-right"><h3><strong>Total Rp. {{ number_format($total,0,',','.')}} </strong></h3></td>
+            <td colspan="5" class="text-right"><h3><strong>Total ${{ $total }}</strong></h3></td>
         </tr>
         <tr>
             <td colspan="5" class="text-right">
                 <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-                <button class="btn btn-success">Checkout</button>
+                <button class="btn btn-success" id="pay-button">Checkout</button>
             </td>
         </tr>
     </tfoot>
 </table>
+<script type="text/javascript">
+      // For example trigger on button clicked, or any time you need
+      var payButton = document.getElementById('pay-button');
+      payButton.addEventListener('click', function () {
+        // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+        window.snap.pay('{{$snapToken}}', {
+          onSuccess: function(result){
+            /* You may add your own implementation here */
+            alert("payment success!"); console.log(result);
+          },
+          onPending: function(result){
+            /* You may add your own implementation here */
+            alert("wating your payment!"); console.log(result);
+          },
+          onError: function(result){
+            /* You may add your own implementation here */
+            alert("payment failed!"); console.log(result);
+          },
+          onClose: function(){
+            /* You may add your own implementation here */
+            alert('you closed the popup without finishing the payment');
+          }
+        })
+      });
+    </script>
 @endsection
   
 @section('scripts')

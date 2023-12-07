@@ -16,6 +16,7 @@
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
 
+
 		<!-- Bootstrap CSS -->
 		<link href="{{asset('front/css/bootstrap.min.css')}}" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -246,6 +247,8 @@
 			</div>
 		</footer>
 		<!-- End Footer Section -->	
+	
+
 
 		<script src="{{asset('front/js/bootstrap.bundle.min.js')}}"></script>
 		<script src="{{asset('front/js/tiny-slider.js')}}"></script>
