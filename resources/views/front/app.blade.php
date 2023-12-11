@@ -16,19 +16,20 @@
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
 
+  <!-- Bootstrap CSS -->
 
-		<!-- Bootstrap CSS -->
 		<link href="{{asset('front/css/bootstrap.min.css')}}" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="{{asset('front/css/tiny-slider.css')}}" rel="stylesheet">
 		<link href="{{asset('front/css/style.css')}}" rel="stylesheet">
 		<!-- cart -->
-		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-		<link href="{{asset('front/css/style1.css')}}" rel="stylesheet">
+
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<link href="{{asset('front/css/style1.css')}}" rel="stylesheet">
 
 		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
 	</head>
@@ -50,7 +51,7 @@
 						<li class="nav-item active">
 							<a class="nav-link" href="{{url('/')}}">Home</a>
 						</li>
-						@auth 
+						@auth
 						<li><a class="nav-link" href="{{url('/shop')}}">Shop</a></li>
 						@endauth
 						<li><a class="nav-link" href="about.html">About us</a></li>
@@ -60,10 +61,10 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="{{route('login')}}"><img src="{{asset('front/images/user.svg')}}"></a></li>
-						@auth
-						<!-- logout -->
-						<li class="nav-item dropdown">
+					<li><a class="nav-link" href="{{route('login')}}"><img src="{{asset('front/images/user.svg')}}"></a></li>
+					@auth
+					<!-- logout -->
+					<li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -80,53 +81,55 @@
                                     </form>
                                 </div>
                             </li>
-							<!-- logout end -->
-						<!-- <li><a class="nav-link" href="cart.html"><img src="{{asset('front/images/cart.svg')}}"></a></li> -->
 
-						<!-- cart start -->
+							<!-- endlogout -->
+
+
+						<!-- <li><a class="nav-link" href="cart.html"><img src="{{asset('front/images/cart.svg')}}"></a></li> -->
+						<!-- cart -->
 						<div class="dropdown">
-							<button type="button" class="btn btn-info" data-toggle="dropdown">
-								<i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
-						</button>
-						<div class="dropdown-menu">
-							<div class="row total-header-section">
-								<div class="col-lg-6 col-sm-6 col-6">
-									<i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
-                        		</div>
-								@php $total = 0 @endphp
-                        		@foreach((array) session('cart') as $id => $details)
-                            		@php $total += $details['harga_jual'] * $details['quantity'] @endphp
-                        		@endforeach
-								<div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                            		<p>Total: <span class="text-info">Rp. {{ $total }}</span></p>
-                        		</div>
-                    		</div>
-							@if(session('cart'))
-							@foreach(session('cart') as $id => $details)
-							<div class="row cart-detail">
+                <button type="button" class="btn btn-info" data-toggle="dropdown">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                </button>
+                <div class="dropdown-menu">
+                    <div class="row total-header-section">
+                        <div class="col-lg-6 col-sm-6 col-6">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                        </div>
+                        @php $total = 0 @endphp
+                        @foreach((array) session('cart') as $id => $details)
+                            @php $total += $details['harga_jual'] * $details['quantity'] @endphp
+                        @endforeach
+                        <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
+                            <p>Total: <span class="text-info">Rp. {{ $total }}</span></p>
+                        </div>
+                    </div>
+                    @if(session('cart'))
+                        @foreach(session('cart') as $id => $details)
+                            <div class="row cart-detail">
                                 <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
 									@empty($details['foto'])
                                     <img src="{{ url('admin/img/nophoto.jpg') }}" />
-									@else
-									<img src="{{ url('admin/img') }}/{{$details['foto']}}" />
+									@else 
+									<img src="{{ url('admin/img')}}/{{$details['foto']}}" />
 									@endempty
+
                                 </div>
                                 <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
                                     <p>{{ $details['nama'] }}</p>
-                                    <span class="price text-info"> Rp. {{ $details['harga_jual'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                                    <span class="price text-info"> Rp. {{$details['harga_jual'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
                                 </div>
                             </div>
-                        	@endforeach
-                    		@endif
-							<div class="row">
-                     			<div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                            		<a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
-                        		</div>
-                    		</div>
-                		</div>
-					</div>
-			<!-- cart end -->
-
+                        @endforeach
+                    @endif
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                            <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<!-- batas cart -->
 					</ul>
 				</div>
 			</div>
@@ -134,27 +137,26 @@
 				
 		</nav>
 		@if(session('success'))
-			<div class="alert alert-success">
-			{{ session('success') }}
-			</div> 
+        <div class="alert alert-success">
+          {{ session('success') }}
+        </div> 
     	@endif
-		<!-- End Header/Navigation -->
 
         @yield('front')
-        @yield('scripts')
 
-        <!-- Start Footer Section -->
-		<footer class="footer-section">
+		@yield('scripts')
+
+        <footer class="footer-section">
 			<div class="container relative">
 
 				<div class="sofa-img">
-					<img src="images/sofa.png" alt="Image" class="img-fluid">
+					<img src="{{asset('front/images/sofa.png')}}" alt="Image" class="img-fluid">
 				</div>
 
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="subscription-form">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
+							<h3 class="d-flex align-items-center"><span class="me-1"><img src="{{asset('front/images/envelope-outline.svg')}}" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
 
 							<form action="#" class="row g-3">
 								<div class="col-auto">
@@ -247,12 +249,12 @@
 			</div>
 		</footer>
 		<!-- End Footer Section -->	
+								<!-- midtrans -->
 	
 
 
 		<script src="{{asset('front/js/bootstrap.bundle.min.js')}}"></script>
 		<script src="{{asset('front/js/tiny-slider.js')}}"></script>
 		<script src="{{asset('front/js/custom.js')}}"></script>
-
 	</body>
 </html>
